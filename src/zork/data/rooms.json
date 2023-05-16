@@ -1,72 +1,95 @@
 {
   "rooms": [
     {
-      "id": "Hallway",
-      "name": "Hallway",
-      "description": "You are in a long hallway. There are family pictures on all of the walls.",
+      "id": "106",
+      "name": "106",
+      "description": "You are in classroom 106, it is empty, you see cookies on the desk.",
+      "exits": [
+        {
+          "isLocked": true,
+          "direction": "South",
+          "adjacentRoom": "G12CA",
+          "keyId": "1234"
+        }
+      ]
+    },
+    {
+      "id": "G12CA",
+      "name": "G12CA",
+      "description": "You are in the Grade 12 Common Area",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "East",
+          "adjacentRoom": "Art Room"
+        },
+        {
+          "isLocked": false,
+          "direction": "South",
+          "adjacentRoom": "Chem Lab"
+        },
+        {
+          "isLocked": false,
+          "direction": "West",
+          "adjacentRoom": "Hallway1"
+        }
+      ]
+    },
+    {
+      "id": "ArtRoom",
+      "name": "ArtRoom",
+      "description": "You are in the Art Room",
+      "exits": [
+        {
+          "isLocked": true,
+          "direction": "West",
+          "adjacentRoom": "G12CA"
+        }
+      ]
+    },
+    {
+      "id": "ChemLab",
+      "name": "ChemLab",
+      "description": "You are in the Chem Lab",
       "exits": [
         {
           "isLocked": false,
           "direction": "North",
-          "adjacentRoom": "Bedroom"
-        },
-        {
-          "isLocked": true,
-          "direction": "East",
-          "adjacentRoom": "Bathroom",
-          "keyId": "1234"
+          "adjacentRoom": "G12CA"
         }
       ]
     },
     {
-      "id": "Bedroom",
-      "name": "Bedroom",
-      "description": "You are in a large bedroom",
+      "id": "Hallway1",
+      "name": "Hallway1",
+      "description": "You are in the Chem Lab",
       "exits": [
-        {
-          "isLocked": false,
-          "direction": "South",
-          "adjacentRoom": "Hallway"
-        },
-        {
-          "isLocked": false,
-          "direction": "SouthEast",
-          "adjacentRoom": "Bathroom"
-        },
         {
           "isLocked": false,
           "direction": "East",
-          "adjacentRoom": "Closet"
-        }
-      ]
-    },
-    {
-      "id": "Bathroom",
-      "name": "Bathroom",
-      "description": "You are in a blue bathroom",
-      "exits": [
-        {
-          "isLocked": true,
-          "direction": "West",
-          "adjacentRoom": "Hallway",
-          "keyId": "1234"
+          "adjacentRoom": "G12CA"
         },
         {
           "isLocked": false,
-          "direction": "NorthWest",
-          "adjacentRoom": "Bedroom"
+          "direction": "North",
+          "adjacentRoom": "StairwayF"
+        },
+        {
+          "isLocked": false,
+          "direction": "West",
+          "adjacentRoom": "Gym"
         }
       ]
     },
     {
-      "id": "Closet",
-      "name": "Closet",
-      "description": "You are in the closet. It is dark.",
+      "id": "Gym",
+      "name": "Gym",
+      "description": "You are in the Gym.",
       "exits": [
         {
           "isLocked": false,
-          "direction": "West",
-          "adjacentRoom": "Bedroom"
+          "direction": "East",
+          "adjacentRoom": "Hallway1"
         }
       ]
     }
