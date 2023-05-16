@@ -16,7 +16,7 @@
     {
       "id": "G12CA",
       "name": "G12CA",
-      "description": "You are in the Grade 12 Common Area",
+      "description": "You are in the Grade 12 Common Area.",
       "exits": [
         {
           "isLocked": false,
@@ -38,7 +38,7 @@
     {
       "id": "ArtRoom",
       "name": "ArtRoom",
-      "description": "You are in the Art Room",
+      "description": "You are in the Art Room.",
       "exits": [
         {
           "isLocked": true,
@@ -50,7 +50,7 @@
     {
       "id": "ChemLab",
       "name": "ChemLab",
-      "description": "You are in the Chem Lab",
+      "description": "You are in the Chem Lab.",
       "exits": [
         {
           "isLocked": false,
@@ -62,7 +62,7 @@
     {
       "id": "Hallway1",
       "name": "Hallway1",
-      "description": "You are in the Chem Lab",
+      "description": "You are in the Hallway.",
       "exits": [
         {
           "isLocked": false,
@@ -72,7 +72,7 @@
         {
           "isLocked": false,
           "direction": "North",
-          "adjacentRoom": "StairwayF"
+          "adjacentRoom": "StairwayF1"
         },
         {
           "isLocked": false,
@@ -90,6 +90,284 @@
           "isLocked": false,
           "direction": "East",
           "adjacentRoom": "Hallway1"
+        }
+      ]
+    },
+    {
+      "id": "StairwayF1",
+      "name": "StairwayF1",
+      "description": "You are in the Stairway.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "Up",
+          "adjacentRoom": "StairwayF2"
+        },
+        {
+          "isLocked": false,
+          "direction": "South",
+          "adjacentRoom": "Hallway1"
+        }
+      ]
+    },
+    {
+      "id": "StairwayF2",
+      "name": "StairwayF2",
+      "description": "You are in the Stairway.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "Down",
+          "adjacentRoom": "StairwayF1"
+        },
+        {
+          "isLocked": false,
+          "direction": "West",
+          "adjacentRoom": "G11CA"
+        }
+      ]
+    },
+    {
+      "id": "G11CA",
+      "name": "G11CA",
+      "description": "You are in the Grade 11 Common Area.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "East",
+          "adjacentRoom": "StairwayF2"
+        },
+        {
+          "isLocked": false,
+          "direction": "North",
+          "adjacentRoom": "Hallway4"
+        }
+      ]
+    },
+    {
+      "id": "Hallway4",
+      "name": "Hallway4",
+      "description": "You are in the Hallway.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "South",
+          "adjacentRoom": "G11CA"
+        },{
+          "isLocked": false,
+          "direction": "West",
+          "adjacentRoom": "DramaRoom"
+        },
+        {
+          "isLocked": false,
+          "direction": "North",
+          "adjacentRoom": "Hallway3"
+        }
+      ]
+    },
+    {
+      "id": "Hallway3",
+      "name": "Hallway3",
+      "description": "You are in the Hallway.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "South",
+          "adjacentRoom": "Hallway4"
+        },
+        {
+          "isLocked": false,
+          "direction": "West",
+          "adjacentRoom": "Theatre"
+        },
+        {
+          "isLocked": false,
+          "direction": "North",
+          "adjacentRoom": "RestRoom1"
+        }
+      ]
+    },
+    {
+      "id": "DramaRoom",
+      "name": "DramaRoom",
+      "description": "You are in the Drama Room.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "East",
+          "adjacentRoom": "Hallway4"
+        }
+      ]
+    },
+    {
+      "id": "Theatre",
+      "name": "Theare",
+      "description": "You are in the Theatre.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "East",
+          "adjacentRoom": "Hallway3"
+        }
+      ]
+    },
+    {
+      "id": "RestRoom1",
+      "name": "RestRoom1",
+      "description": "You are in the Rest Room. Weirdo.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "South",
+          "adjacentRoom": "Hallway3"
+        }
+      ]
+    },
+    {
+      "id": "Hallway2",
+      "name": "Hallway2",
+      "description": "You are in the Hallway.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "East",
+          "adjacentRoom": "FitnessRoom"
+        },
+        {
+          "isLocked": false,
+          "direction": "South",
+          "adjacentRoom": "Library"
+        },
+        {
+          "isLocked": false,
+          "direction": "West",
+          "adjacentRoom": "Hallway3"
+        },
+        {
+          "isLocked": false,
+          "direction": "North",
+          "adjacentRoom": "Cafeteria"
+        }
+      ]
+    },
+    {
+      "id": "Cafeteria",
+      "name": "Cafeteria",
+      "description": "You are in the Cafeteria.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "South",
+          "adjacentRoom": "Hallway2"
+        }
+      ]
+    },
+    {
+      "id": "FitnessRoom",
+      "name": "FitnessRoom",
+      "description": "You are in the Fitness Room.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "West",
+          "adjacentRoom": "Hallway2"
+        }
+      ]
+    },
+    {
+      "id": "Library",
+      "name": "Library",
+      "description": "You are in the Library.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "North",
+          "adjacentRoom": "Hallway2"
+        },
+        {
+          "isLocked": false,
+          "direction": "South",
+          "adjacentRoom": "AlumniHall"
+        }
+      ]
+    },
+    {
+      "id": "AlumniHall",
+      "name": "AlumniHall",
+      "description": "You are in the AlumniHall.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "North",
+          "adjacentRoom": "Library"
+        },
+        {
+          "isLocked": false,
+          "direction": "East",
+          "adjacentRoom": "MusicRoom"
+        },
+        {
+          "isLocked": false,
+          "direction": "South",
+          "adjacentRoom": "RestRoom2"
+        }
+      ]
+    },
+    {
+      "id": "RestRoom2",
+      "name": "RestRoom2",
+      "description": "You are in the Rest Room. Weirdo.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "North",
+          "adjacentRoom": "AlumniHall"
+        }
+      ]
+    },
+    {
+      "id": "MusicRoom",
+      "name": "MusicRoom",
+      "description": "You are in the Music Room.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "West",
+          "adjacentRoom": "AlumniHall"
+        },
+        {
+          "isLocked": false,
+          "direction": "South",
+          "adjacentRoom": "Hallway5"
+        }
+      ]
+    },
+    {
+      "id": "Hallway5",
+      "name": "Hallway5",
+      "description": "You are in the Hallway.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "North",
+          "adjacentRoom": "MusicRoom"
+        },
+        {
+          "isLocked": false,
+          "direction": "South",
+          "adjacentRoom": "BusinessRoom"
+        }
+      ]
+    },
+    {
+      "id": "BusinessRoom",
+      "name": "BusinessRoom",
+      "description": "You are in the Business Room.",
+      "exits": [
+        {
+          "isLocked": false,
+          "direction": "North",
+          "adjacentRoom": "Hallway5"
         }
       ]
     }
