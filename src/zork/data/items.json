@@ -1,0 +1,9 @@
+{
+    "items": [
+        {
+            "id": "key",
+            "name": "key",
+            "description": "This is a key that can be used to unlock a door"
+        }
+    ]
+}
