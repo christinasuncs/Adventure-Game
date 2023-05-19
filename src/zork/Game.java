@@ -108,11 +108,8 @@ public class Game {
       printHelp();
     else if (commandWord.equals("go"))
       goRoom(command);
-    else if (commandWord.equals("teleport")){
-      teleport(command.getSecondWord());
-    }
     else if (commandWord.equals("jump")){
-      System.out.println("You jumped! Ms. Deeks would be happy!");
+      System.out.println("You scream in pain. How did you forget about your injured knee?");
     }
     else if (commandWord.equals("quit")) {
       if (command.hasSecondWord())
@@ -121,22 +118,13 @@ public class Game {
         return true; // signal that we want to quit
     } else if (commandWord.equals("eat")) {
       System.out.println("Do you really think you should be eating at a time like this?");
+    } else if (commandWord.equals("run")){
+      System.out.println("Do you think you can run with a knee injury?!");
     }
     return false;
   }
 
   // implementations of user commands:
-
-  private void teleport(String roomName) {
-    Room nextRoom = roomMap.get(roomName);
-    if (nextRoom == null) {
-      System.out.println("The " + roomName + " does not exist.");
-    }
-    else {
-      currentRoom = nextRoom;
-      System.out.println(currentRoom.longDescription());
-    }
-  }
 
   /**
    * Print out some help information. Here we print some stupid, cryptic message
