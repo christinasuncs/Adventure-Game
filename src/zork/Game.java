@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,6 +16,8 @@ public class Game {
 
   private Parser parser;
   private Room currentRoom;
+  private Inventory inventory = new Inventory(100);
+  ArrayList<Item> validItems = inventory.getInventory();
 
   /**
    * Create the game and initialise its internal map.
@@ -86,8 +89,9 @@ public class Game {
    */
   private void printWelcome() {
     System.out.println();
-    System.out.println("Welcome to Zork!");
-    System.out.println("Zork is a new, incredibly boring adventure game.");
+    System.out.println("Welcome to Afterschool at BVG!");
+    System.out.println("You will play as Christina and help her complete tasks around the school");
+    System.out.println("As task are completed, you will earn points to boost your grade");
     System.out.println("Type 'help' if you need help.");
     System.out.println();
     System.out.println(currentRoom.longDescription());
@@ -102,11 +106,10 @@ public class Game {
       System.out.println("I don't know what you mean...");
       return false;
     }
-
     String commandWord = command.getCommandWord();
     if (commandWord.equals("help"))
       printHelp();
-    else if (commandWord.equals("go"))
+    else if (commandWord.equals("go") || commandWord.equals("walk"))  //allow both go and walk (e.g. walk north or go north is the same thing)
       goRoom(command);
     else if (commandWord.equals("jump")){
       System.out.println("You scream in pain. How did you forget about your injured knee?");
@@ -117,23 +120,71 @@ public class Game {
       else
         return true; // signal that we want to quit
     } else if (commandWord.equals("eat")) {
-      System.out.println("Do you really think you should be eating at a time like this?");
+      eat(command);
     } else if (commandWord.equals("run")){
       System.out.println("Do you think you can run with a knee injury?!");
+    } else if(commandWord.equals("use")){
+      use(command);
     }
     return false;
   }
 
   // implementations of user commands:
 
+  private void eat(Command command) {
+    if(!command.hasSecondWord()){
+      System.out.println("You can't eat air, can you?");
+      return;
+    }
+    String item = command.getSecondWord();
+    Item currItem = null;
+
+    for(Item i: validItems){
+      if(i.getName().equals(item)){
+        currItem = i;
+      }
+    }
+
+    if(currItem.canEat()){
+      ArrayList<String> responsesEat = new ArrayList<String>(Arrays.asList("That had a weird aftertaste... ", "That was tasty", "Your stomach growls...you must still be hungry"));
+      int index = (int) (Math.random()*responsesEat.size());
+      System.out.println(responsesEat.get(index));
+    }
+    else{
+      System.out.println("I don't think you can eat that.");
+    }
+
+  }
+
+  private void use(Command command) {
+    if(!command.hasSecondWord()){
+      System.out.println("What do you want to use?");
+      return;
+    }
+    String name = command.getSecondWord();
+    Item currItem = null;
+
+    //check if item is in inventory and set it to currItem if it is
+    if(inventory.hasItem(name)){
+      for(Item i: validItems){
+        if(name.equals(i.getName())){
+          currItem = i;
+        }
+      }
+    }
+    if(currItem.canEat()){
+      eat(command);
+    }
+
+    
+  }
+
   /**
    * Print out some help information. Here we print some stupid, cryptic message
    * and a list of the command words.
    */
   private void printHelp() {
-    System.out.println("You are lost. You are alone. You wander");
-    System.out.println("around at Monash Uni, Peninsula Campus.");
-    System.out.println();
+    System.out.println("You're getting tired. It would be nice to be home right now...");
     System.out.println("Your command words are:");
     parser.showCommands();
   }
@@ -151,14 +202,28 @@ public class Game {
 
     String direction = command.getSecondWord();
 
+    
     // Try to leave current room.
     Room nextRoom = currentRoom.nextRoom(direction);
 
+    //Check that the direction is a valid exit
+    Exit exit = null;
+    ArrayList<Exit> validExits = currentRoom.getExits();
+    for(int i = 0; i < validExits.size(); i++){
+      if(validExits.get(i).getDirection().equals(direction)){
+          exit = validExits.get(i);
+      }
+    }
+
     if (nextRoom == null)
-      System.out.println("There is no door!");
+      System.out.println("Why are you walking into a wall?");
+    else if(exit.isLocked()){
+      System.out.println("The door is locked. You cannot go this way unless you have a key...");
+    }
     else {
       currentRoom = nextRoom;
       System.out.println(currentRoom.longDescription());
+      //print out dialogue from characters
     }
   }
 }
