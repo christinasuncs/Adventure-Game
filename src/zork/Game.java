@@ -64,6 +64,8 @@ public class Game {
     }
   }
 
+  //We need to initialize the items here once we create the items.json
+
   /**
    * Main play routine. Loops until end of play.
    */
@@ -92,7 +94,7 @@ public class Game {
     System.out.println("Welcome to Afterschool at BVG!");
     System.out.println("You will play as Christina and help her complete tasks around the school");
     System.out.println("As task are completed, you will earn points to boost your grade");
-    System.out.println("Type 'help' if you need help.");
+    System.out.println("Type 'help' to see all your available actions");
     System.out.println();
     System.out.println(currentRoom.longDescription());
   }
@@ -125,6 +127,8 @@ public class Game {
       System.out.println("Do you think you can run with a knee injury?!");
     } else if(commandWord.equals("use")){
       use(command);
+    } else if(commandWord.equals("i") || commandWord.equals("inventory")){
+      inventory.display();
     }
     return false;
   }
@@ -132,7 +136,7 @@ public class Game {
   // implementations of user commands:
 
   private void eat(Command command) {
-    if(!command.hasSecondWord()){
+    if(!command.hasSecondWord()){ //need an item to be able to eat
       System.out.println("You can't eat air, can you?");
       return;
     }
@@ -145,10 +149,14 @@ public class Game {
       }
     }
 
-    if(currItem.canEat()){
+    if(currItem != null && currItem.canEat()){
       ArrayList<String> responsesEat = new ArrayList<String>(Arrays.asList("That had a weird aftertaste... ", "That was tasty", "Your stomach growls...you must still be hungry"));
-      int index = (int) (Math.random()*responsesEat.size());
+      int index = (int) (Math.random()*responsesEat.size());  //generate a random response from the list
       System.out.println(responsesEat.get(index));
+      if("cookie".equals(currItem.getName())){
+        System.out.println("You bite into something hard, almost chipping your tooth.");
+        System.out.println("Inside the cookie is a key!");
+      }
     }
     else{
       System.out.println("I don't think you can eat that.");
@@ -169,14 +177,28 @@ public class Game {
       for(Item i: validItems){
         if(name.equals(i.getName())){
           currItem = i;
+          break;
         }
       }
     }
-    if(currItem.canEat()){
+    if(currItem == null){
+      System.out.println("You do not have this item.");
+      return;
+    }
+    if(currItem.canEat()){  //assume that if the item is a food, the player wants to eat it.
       eat(command);
+    } else{ //assume that by asking to "use" an item, the player wants to open it. 
+      open(command);
     }
 
     
+  }
+
+  private void open(Command command) {  //will need to find a way to check if the object is in the room
+    if(!command.hasSecondWord()){
+      System.out.println("What do you want to open?");
+      return;
+    }
   }
 
   /**
@@ -218,7 +240,7 @@ public class Game {
     if (nextRoom == null)
       System.out.println("Why are you walking into a wall?");
     else if(exit.isLocked()){
-      System.out.println("The door is locked. You cannot go this way unless you have a key...");
+      System.out.println("The door is locked. You cannot go this way...unless you have a key.");
     }
     else {
       currentRoom = nextRoom;

@@ -29,7 +29,7 @@ public class Inventory {
     if (item.getWeight() + currentWeight <= maxWeight)
       return items.add(item);
     else {
-      System.out.println("There is no room to add the item.");
+      System.out.println("Sorry...your backpack is full");
       return false;
     }
   }
@@ -52,6 +52,13 @@ public class Inventory {
       }
 
     }
+  }
+  
+  public void display(){
+    for(Item i: items){
+      System.out.println("-->" + i.getName());
+    }
+    System.out.println("Your backpack is " + (int)(getCurrentWeight()/maxWeight) + "% full");
   }
 
   public boolean hasItem(String itemName){

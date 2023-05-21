@@ -1,15 +1,16 @@
 package zork;
-// test
+
 public class Item extends OpenableObject {
   private int weight;
   private String name;
   private boolean isOpenable;
   private boolean canEat;
-// test2
-  public Item(int weight, String name, boolean isOpenable) {
+
+  public Item(int weight, String name, boolean isOpenable, boolean canEat) {
     this.weight = weight;
     this.name = name;
     this.isOpenable = isOpenable;
+    this.canEat = canEat;
   }
 
   public void open() {

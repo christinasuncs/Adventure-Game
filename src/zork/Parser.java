@@ -52,23 +52,17 @@ public class Parser {
 
       int index = checkNoun(words); //check if valid noun inputed
 
-      if(index > 0){
+      if(index > 0) {
         word2 = words.get(index);
       }
+    }
 
-      if (commands.isCommand(word1))
+      if (words.size() == 0){
+        return new Command(null, null);
+      }else if(commands.isCommand(word1)) {
         return new Command(word1, word2);
-      else
-        return new Command(null, word2);
-    }
-
-    else if (commands.isCommand(word1)){
-      return new Command(word1, null);
-    }
-
-    else
-      return new Command(null, null);
-    
+      }else 
+        return new Command(null, word2); 
   }
 
   //check to see if the user inputted a valid noun and return its index
