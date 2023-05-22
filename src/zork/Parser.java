@@ -20,8 +20,7 @@ public class Parser {
 
     System.out.print("> "); // print prompt
 
-    inputLine = in.nextLine();
-    inputLine.trim().toLowerCase(); //delete additional spaces and set all letters to lowercase
+    inputLine = in.nextLine().toLowerCase(); //delete additional spaces and set all letters to lowercase
 
     //splits the user input based on the delimeter (i.e. space) and assigns it to words
     words = new ArrayList<String>(Arrays.asList(inputLine.split(" "))); 

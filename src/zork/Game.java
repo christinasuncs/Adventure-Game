@@ -129,11 +129,30 @@ public class Game {
       use(command);
     } else if(commandWord.equals("i") || commandWord.equals("inventory")){
       inventory.display();
+    } else if(commandWord.equals("drop")){
+      if(!command.hasSecondWord()){
+        System.out.println("What do you want to drop?");
+      } else
+          inventory.removeItem(command.getSecondWord());
+    } else if(commandWord.equals("take")){
+        take(command);
     }
     return false;
   }
 
   // implementations of user commands:
+
+  private void take(Command command) {
+    if(!command.hasSecondWord()){
+      System.out.println("What do you want to take?");
+      return;
+    }
+    String item = command.getSecondWord();
+    Item currItem = null;
+
+      //need way to get all the valid items in the room and check if secondWord matches
+
+  }
 
   private void eat(Command command) {
     if(!command.hasSecondWord()){ //need an item to be able to eat
@@ -143,13 +162,15 @@ public class Game {
     String item = command.getSecondWord();
     Item currItem = null;
 
-    for(Item i: validItems){
+    for(Item i : validItems){
       if(i.getName().equals(item)){
         currItem = i;
       }
     }
-
-    if(currItem != null && currItem.canEat()){
+    if(currItem == null){
+      System.out.println("You don't have this item in your backpack");
+      return;
+    } else if(currItem != null && currItem.canEat()){
       ArrayList<String> responsesEat = new ArrayList<String>(Arrays.asList("That had a weird aftertaste... ", "That was tasty", "Your stomach growls...you must still be hungry"));
       int index = (int) (Math.random()*responsesEat.size());  //generate a random response from the list
       System.out.println(responsesEat.get(index));
@@ -232,20 +253,19 @@ public class Game {
     Exit exit = null;
     ArrayList<Exit> validExits = currentRoom.getExits();
     for(int i = 0; i < validExits.size(); i++){
-      if(validExits.get(i).getDirection().equals(direction)){
+      if(validExits.get(i).getDirection().equalsIgnoreCase(direction)){
           exit = validExits.get(i);
       }
     }
 
-    if (nextRoom == null)
-      System.out.println("Why are you walking into a wall?");
+    if (exit == null)
+      System.out.println("You walk straight into a wall.");
     else if(exit.isLocked()){
       System.out.println("The door is locked. You cannot go this way...unless you have a key.");
     }
     else {
       currentRoom = nextRoom;
       System.out.println(currentRoom.longDescription());
-      //print out dialogue from characters
     }
   }
 }

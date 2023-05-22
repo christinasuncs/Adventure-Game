@@ -1,0 +1,13 @@
+{
+    "items": [
+        {
+            "id": "",
+            "name": "cookie",
+            "description": "A freshly baked chocolate chip cookie.",
+            "room": "",
+            "weight": 10,
+            "canEat": true
+
+        }
+    ]
+}
