@@ -136,11 +136,39 @@ public class Game {
           inventory.removeItem(command.getSecondWord());
     } else if(commandWord.equals("take")){
         take(command);
+    } else if(commandWord.equals("give")){
+        give(command);
     }
     return false;
   }
 
   // implementations of user commands:
+
+  private void give(Command command) {
+    if(!command.hasSecondWord()){
+      System.out.println("What do you want to give?");
+      return;
+    }
+    String item = command.getSecondWord();
+    Item currItem = null;
+    validItems = inventory.getInventory();
+
+    for(Item i : validItems){
+      if(i.getName().equals(item)){
+        currItem = i;
+      }
+    }
+    if(currItem == null){
+      System.out.println("You don't have this item to give.");
+      return;
+    } 
+    // else if(currItem.isTask()){
+    //   //increment points
+    //   //set isTask to false so cannot complete task more than once
+    //   //only items that we need to give are tasks
+
+    // }
+  }
 
   private void take(Command command) {
     if(!command.hasSecondWord()){
@@ -149,8 +177,10 @@ public class Game {
     }
     String item = command.getSecondWord();
     Item currItem = null;
+    validItems = inventory.getInventory();
 
       //need way to get all the valid items in the room and check if secondWord matches
+      //once item is added remove it from list of items in room
 
   }
 
@@ -161,6 +191,7 @@ public class Game {
     }
     String item = command.getSecondWord();
     Item currItem = null;
+    validItems = inventory.getInventory();
 
     for(Item i : validItems){
       if(i.getName().equals(item)){
@@ -174,10 +205,11 @@ public class Game {
       ArrayList<String> responsesEat = new ArrayList<String>(Arrays.asList("That had a weird aftertaste... ", "That was tasty", "Your stomach growls...you must still be hungry"));
       int index = (int) (Math.random()*responsesEat.size());  //generate a random response from the list
       System.out.println(responsesEat.get(index));
-      if("cookie".equals(currItem.getName())){
-        System.out.println("You bite into something hard, almost chipping your tooth.");
-        System.out.println("Inside the cookie is a key!");
-      }
+        if("cookie".equals(currItem.getName())){
+          System.out.println("You bite into something hard, almost chipping your tooth.");
+          System.out.println("Inside the cookie is a key!");
+        }
+      //remove item from inventory
     }
     else{
       System.out.println("I don't think you can eat that.");
@@ -192,6 +224,7 @@ public class Game {
     }
     String name = command.getSecondWord();
     Item currItem = null;
+    validItems = inventory.getInventory();
 
     //check if item is in inventory and set it to currItem if it is
     if(inventory.hasItem(name)){
