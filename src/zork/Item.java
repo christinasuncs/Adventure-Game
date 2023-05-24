@@ -49,4 +49,8 @@ public class Item extends OpenableObject {
     return canEat;
   }
 
+  public boolean isTask(){
+    return isTask;
+  }
+
 }
