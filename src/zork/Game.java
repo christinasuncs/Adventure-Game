@@ -138,8 +138,13 @@ public class Game {
         take(command);
     } else if(commandWord.equals("give")){
         give(command);
-    }
-    return false;
+    }else if (commandWord.equals("sing")){
+      System.out.println("lalalalala");
+    }else if (commandWord.equals("scream")){
+      System.out.println("AAAAAAHHHHHHHHHHHHH");
+    }else if (commandWord.equals("cry"))
+    System.out.println("Crying won't help you =)");
+    
   }
 
   // implementations of user commands:
