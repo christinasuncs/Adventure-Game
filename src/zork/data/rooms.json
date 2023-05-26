@@ -3,7 +3,7 @@
     {
       "id": "106",
       "name": "106",
-      "description": "You are in classroom 106, it is empty, you see cookies on the desk.",
+      "description": "You are in classroom 106, it is empty, you see a cookie on the desk.",
       "exits": [
         {
           "isLocked": true,

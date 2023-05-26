@@ -6,8 +6,8 @@
             "description": "A freshly baked chocolate chip cookie.",
             "room": "",
             "weight": 10,
-            "canEat": true
-
+            "canEat": true,
+            "isTask": true
         }
     ]
 }
