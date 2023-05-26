@@ -65,6 +65,24 @@ public class Game {
   }
 
   //We need to initialize the items here once we create the items.json
+  private void initItems(String fileName) throws Exception {
+    Path path = Path.of(fileName);
+    String jsonString = Files.readString(path);
+    JSONParser parser = new JSONParser();
+    JSONObject json = (JSONObject) parser.parse(jsonString);
+
+    JSONArray jsonItems = (JSONArray) json.get("items");
+
+    for(Object itemObj : jsonItems) {
+      String itemName = (String) ((JSONObject) itemObj).get("name");
+      String itemId = (String) ((JSONObject) itemObj).get("id");
+      String itemDescription = (String) ((JSONObject) itemObj).get("description");
+      String itemRoom = (String) ((JSONObject) itemObj).get("room");
+      int itemWeight = (int) ((JSONObject) itemObj).get("weight");
+      boolean itemCanEat = (boolean) ((JSONObject) itemObj).get("canEat");
+      boolean itemIsTask = (boolean) ((JSONObject) itemObj).get("isTask");
+    }
+  }
 
   /**
    * Main play routine. Loops until end of play.
