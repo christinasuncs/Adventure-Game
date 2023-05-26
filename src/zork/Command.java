@@ -19,7 +19,9 @@ public class Command {
    * not understood, the result is null.
    */
   public String getCommandWord() {
-    return commandWord;
+    if(isUnknown())
+    return null;
+    else return getCommandWord();
   }
 
   /**

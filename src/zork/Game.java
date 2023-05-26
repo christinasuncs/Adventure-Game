@@ -162,6 +162,7 @@ public class Game {
 
   // implementations of user commands:
 
+
   private void give(Command command) {
     if(!command.hasSecondWord()){
       System.out.println("What do you want to give?");
@@ -195,7 +196,7 @@ public class Game {
     }
     String item = command.getSecondWord();
     Item currItem = null;
-    validItems = inventory.getInventory();
+    //validItems in the room
 
       //need way to get all the valid items in the room and check if secondWord matches
       //once item is added remove it from list of items in room
@@ -223,11 +224,12 @@ public class Game {
       ArrayList<String> responsesEat = new ArrayList<String>(Arrays.asList("That had a weird aftertaste... ", "That was tasty", "Your stomach growls...you must still be hungry"));
       int index = (int) (Math.random()*responsesEat.size());  //generate a random response from the list
       System.out.println(responsesEat.get(index));
-        if("cookie".equals(currItem.getName())){
+        if("cookie".equals(currItem.getName())){  //if the item is the cookie, should give user key
           System.out.println("You bite into something hard, almost chipping your tooth.");
           System.out.println("Inside the cookie is a key!");
+          //inventory.addItem(key);
         }
-      //remove item from inventory
+      inventory.removeItem(currItem.getName()); //take out item from inventory bc can only eat once
     }
     else{
       System.out.println("I don't think you can eat that.");
@@ -271,6 +273,11 @@ public class Game {
       System.out.println("What do you want to open?");
       return;
     }
+    String name = command.getSecondWord();
+    Item currItem = null;
+    //get rooms current items
+
+    
   }
 
   /**

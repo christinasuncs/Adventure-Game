@@ -5,7 +5,7 @@
             "name": "cookie",
             "description": "A freshly baked chocolate chip cookie.",
             "room": "",
-            "weight": 10,
+            "weight": 5,
             "canEat": true,
             "isTask": true
         },
@@ -16,6 +16,87 @@
             "room": "",
             "weight": 3,
             "canEat": false,
+            "isTask": true
+        },
+        {
+            "id": "fire extinguisher",
+            "name": "fire extinguisher",
+            "description": "This is a fire extinguisher.",
+            "room": "",
+            "weight": 10,
+            "canEat": false,
+            "isTask": true
+        },
+        {
+            "id": "wrapper",
+            "name": "wrapper",
+            "description": "This is a wrapper.",
+            "room": "",
+            "weight": 1,
+            "canEat": false,
+            "isTask": false
+        },
+        {
+            "id": "note",
+            "name": "note",
+            "description": "This is a note, it may have a message.",
+            "room": "",
+            "weight": 1,
+            "canEat": false,
+            "isTask": false
+        },
+        {
+            "id": "chips",
+            "name": "chips",
+            "description": "These are some chips.",
+            "room": "",
+            "weight": 3,
+            "canEat": true,
+            "isTask": false
+        },
+        {
+            "id": "dumbell",
+            "name": "dumbell",
+            "description": "This is a dumbell, it weighs 100 lbs.",
+            "room": "",
+            "weight": 100,
+            "canEat": false,
+            "isTask": false
+        },
+        {
+            "id": "book",
+            "name": "book",
+            "description": "This is a book called A Thousand Splendid Suns.",
+            "room": "",
+            "weight": 5,
+            "canEat": false,
+            "isTask": true
+        },
+        {
+            "id": "rag",
+            "name": "rag",
+            "description": "This is a rag which you can use to clean things.",
+            "room": "",
+            "weight": 2,
+            "canEat": false,
+            "isTask": true
+        },
+        {
+            "id": "lunch card",
+            "name": "lunch card",
+            "description": "This is a lunch card you can use to purchase food and beverages.",
+            "room": "",
+            "weight": 1,
+            "canEat": false,
+            "isTask": true
+        },
+        {
+            "id": "trophy",
+            "name": "trophy",
+            "description": "This is a DECA first place trophy from the International Career Development Conference.",
+            "room": "",
+            "weight": 3,
+            "canEat": true,
             "isTask": true
         }
     ]
