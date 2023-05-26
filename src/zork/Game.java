@@ -86,8 +86,8 @@ public class Game {
    */
   private void printWelcome() {
     System.out.println();
-    System.out.println("Welcome to Zork!");
-    System.out.println("Zork is a new, incredibly boring adventure game.");
+    System.out.println("Welcome to Ping Pong!");
+    System.out.println("Ping Pong is a new, incredibly entertaining adventure game.");
     System.out.println("Type 'help' if you need help.");
     System.out.println();
     System.out.println(currentRoom.longDescription());
@@ -108,11 +108,11 @@ public class Game {
       printHelp();
     else if (commandWord.equals("go"))
       goRoom(command);
-    else if (commandWord.equals("teleport")){
-      teleport(command.getSecondWord());
-    }
+    // else if (commandWord.equals("teleport")){
+    //   teleport(command.getSecondWord());
+    // }
     else if (commandWord.equals("jump")){
-      System.out.println("You jumped! Ms. Deeks would be happy!");
+      System.out.println("Your knee injury reminds you of it's presence!");
     }
     else if (commandWord.equals("quit")) {
       if (command.hasSecondWord())
@@ -120,23 +120,23 @@ public class Game {
       else
         return true; // signal that we want to quit
     } else if (commandWord.equals("eat")) {
-      System.out.println("Do you really think you should be eating at a time like this?");
+      System.out.println("How delicious!!");
     }
     return false;
   }
 
   // implementations of user commands:
 
-  private void teleport(String roomName) {
-    Room nextRoom = roomMap.get(roomName);
-    if (nextRoom == null) {
-      System.out.println("The " + roomName + " does not exist.");
-    }
-    else {
-      currentRoom = nextRoom;
-      System.out.println(currentRoom.longDescription());
-    }
-  }
+  // private void teleport(String roomName) {
+  //   Room nextRoom = roomMap.get(roomName);
+  //   if (nextRoom == null) {
+  //     System.out.println("The " + roomName + " does not exist.");
+  //   }
+  //   else {
+  //     currentRoom = nextRoom;
+  //     System.out.println(currentRoom.longDescription());
+  //   }
+  // }
 
   /**
    * Print out some help information. Here we print some stupid, cryptic message
