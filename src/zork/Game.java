@@ -144,6 +144,7 @@ public class Game {
 
   // implementations of user commands:
 
+
   private void give(Command command) {
     if(!command.hasSecondWord()){
       System.out.println("What do you want to give?");
