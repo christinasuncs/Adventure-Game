@@ -21,13 +21,53 @@ public class Inventory {
     return currentWeight;
   }
 
+  public ArrayList<Item> getInventory(){
+    return items;
+  }
+
   public boolean addItem(Item item) {
     if (item.getWeight() + currentWeight <= maxWeight)
       return items.add(item);
     else {
-      System.out.println("There is no room to add the item.");
+      System.out.println("Sorry...your backpack is full");
       return false;
     }
+  }
+
+  public void removeItem(String itemName){
+    Item currItem = null;
+    if(hasItem(itemName)){
+      for(Item item: items){
+        if(item.getName().equals(itemName))
+          currItem = item;
+      }
+      for(int i = items.size() - 1; i >= 0; i--){
+        if(items.get(i).getName().equals(itemName)){
+          items.remove(i);
+          currentWeight -= currItem.getWeight();
+          if(!currItem.canEat()){
+            System.out.println("You dropped a " + itemName);
+          }
+        }
+      }
+
+    }
+  }
+  
+  public void display(){
+    for(Item i: items){
+      System.out.println("-->" + i.getName());
+    }
+    System.out.println("Your backpack is " + (int)(getCurrentWeight()/maxWeight) + "% full");
+  }
+
+  public boolean hasItem(String itemName){
+    for(int i = 0; i < items.size(); i++){
+      if(itemName.equals(items.get(i).getName())){
+        return true;  //found in inventory
+      }
+    }
+    return false; //not found
   }
 
 }
