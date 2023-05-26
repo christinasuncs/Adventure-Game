@@ -1,9 +1,22 @@
 {
     "items": [
         {
+            "id": "cookie",
+            "name": "cookie",
+            "description": "A freshly baked chocolate chip cookie.",
+            "room": "",
+            "weight": 10,
+            "canEat": true,
+            "isTask": true
+        },
+        {
             "id": "key",
             "name": "key",
-            "description": "This is a key that can be used to unlock a door"
+            "description": "This is a key.",
+            "room": "",
+            "weight": 3,
+            "canEat": false,
+            "isTask": true
         }
     ]
 }
