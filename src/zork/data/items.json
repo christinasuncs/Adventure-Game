@@ -4,7 +4,7 @@
             "id": "cookie",
             "name": "cookie",
             "description": "A freshly baked chocolate chip cookie.",
-            "room": "",
+            "room": "106",
             "weight": 5,
             "canEat": true,
             "isTask": true
@@ -13,7 +13,7 @@
             "id": "key",
             "name": "key",
             "description": "This is a key.",
-            "room": "",
+            "room": "106",
             "weight": 3,
             "canEat": false,
             "isTask": true
@@ -22,8 +22,17 @@
             "id": "fire extinguisher",
             "name": "fire extinguisher",
             "description": "This is a fire extinguisher.",
-            "room": "",
+            "room": "ChemLab",
             "weight": 10,
+            "canEat": false,
+            "isTask": true
+        },
+        {
+            "id": "button to lower net",
+            "name": "button to lower net",
+            "description": "This is a button used to lower and lift the basketball net.",
+            "room": "Gym",
+            "weight": 1,
             "canEat": false,
             "isTask": true
         },
@@ -31,7 +40,7 @@
             "id": "wrapper",
             "name": "wrapper",
             "description": "This is a wrapper.",
-            "room": "",
+            "room": "G11CA",
             "weight": 1,
             "canEat": false,
             "isTask": false
@@ -40,7 +49,7 @@
             "id": "note",
             "name": "note",
             "description": "This is a note, it may have a message.",
-            "room": "",
+            "room": "Hallway4",
             "weight": 1,
             "canEat": false,
             "isTask": false
@@ -49,16 +58,16 @@
             "id": "chips",
             "name": "chips",
             "description": "These are some chips.",
-            "room": "",
+            "room": "Cafeteria",
             "weight": 3,
             "canEat": true,
             "isTask": false
         },
         {
-            "id": "dumbell",
-            "name": "dumbell",
-            "description": "This is a dumbell, it weighs 100 lbs.",
-            "room": "",
+            "id": "dumbbell",
+            "name": "dumbbell",
+            "description": "This is a dumbbell, it weighs 100 lbs.",
+            "room": "FitnessRoom",
             "weight": 100,
             "canEat": false,
             "isTask": false
@@ -66,8 +75,8 @@
         {
             "id": "book",
             "name": "book",
-            "description": "This is a book called A Thousand Splendid Suns.",
-            "room": "",
+            "description": "This is a book called 101 Ways to Destroy Reeds.",
+            "room": "Library",
             "weight": 5,
             "canEat": false,
             "isTask": true
@@ -76,7 +85,7 @@
             "id": "rag",
             "name": "rag",
             "description": "This is a rag which you can use to clean things.",
-            "room": "",
+            "room": "AlumniHall",
             "weight": 2,
             "canEat": false,
             "isTask": true
@@ -85,7 +94,7 @@
             "id": "lunch card",
             "name": "lunch card",
             "description": "This is a lunch card you can use to purchase food and beverages.",
-            "room": "",
+            "room": "RestRoom2",
             "weight": 1,
             "canEat": false,
             "isTask": true
@@ -94,9 +103,9 @@
             "id": "trophy",
             "name": "trophy",
             "description": "This is a DECA first place trophy from the International Career Development Conference.",
-            "room": "",
+            "room": "BusinessRoom",
             "weight": 3,
-            "canEat": true,
+            "canEat": false,
             "isTask": true
         }
     ]
