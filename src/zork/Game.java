@@ -17,15 +17,24 @@ public class Game {
   private Parser parser;
   private Room currentRoom;
   private Inventory inventory = new Inventory(100);
-  ArrayList<Item> validItems = inventory.getInventory();
-
+  private ArrayList<Item> validItems = inventory.getInventory();
+  public static ArrayList<Item> itemsMap = new ArrayList<Item>();
   /**
    * Create the game and initialise its internal map.
    */
   public Game() {
     try {
       initRooms("src\\zork\\data\\rooms.json");
+      initItems("src\\zork\\data\\items.json");
+
       currentRoom = roomMap.get("106");
+
+      for(Item item: itemsMap){
+        String itemRoom = item.getRoom();
+        Room room = roomMap.get(itemRoom);
+        room.addItem(item);
+      }
+
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -74,6 +83,7 @@ public class Game {
     JSONArray jsonItems = (JSONArray) json.get("items");
 
     for(Object itemObj : jsonItems) {
+      Item item;
       String itemName = (String) ((JSONObject) itemObj).get("name");
       String itemId = (String) ((JSONObject) itemObj).get("id");
       String itemDescription = (String) ((JSONObject) itemObj).get("description");
@@ -81,6 +91,8 @@ public class Game {
       int itemWeight = (int) ((JSONObject) itemObj).get("weight");
       boolean itemCanEat = (boolean) ((JSONObject) itemObj).get("canEat");
       boolean itemIsTask = (boolean) ((JSONObject) itemObj).get("isTask");
+      item = new Item(itemWeight, itemName,false, itemCanEat, itemIsTask, itemRoom, itemDescription);
+      itemsMap.add(item);
     }
   }
 
@@ -156,17 +168,42 @@ public class Game {
         take(command);
     } else if(commandWord.equals("give")){
         give(command);
+    } else if(commandWord.equals("find")){
+        find(command);
     }else if (commandWord.equals("sing")){
       System.out.println("lalalalala");
     }else if (commandWord.equals("scream")){
       System.out.println("AAAAAAHHHHHHHHHHHHH");
     }else if (commandWord.equals("cry"))
-    System.out.println("Crying won't help you =)");
+      System.out.println("Crying won't help you =)");
+    return false;
     
   }
 
   // implementations of user commands:
 
+
+  private void find(Command command) {
+    if(!command.hasSecondWord()){
+      System.out.println("What do you want to find?");
+      return;
+    }
+    String item = command.getSecondWord();
+    Item currItem = null;
+    for(Item i: currentRoom.getItems()){
+      if(i.getName().equals(item)){
+        currItem = i;
+      }
+    }
+    if(currItem != null){
+      inventory.addItem(currItem);
+      System.out.println("You found " + item + "!");
+    } else {
+      System.out.println("There is no" + item + "in this room");
+    }
+
+    
+  }
 
   private void give(Command command) {
     if(!command.hasSecondWord()){
