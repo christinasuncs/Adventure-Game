@@ -24,12 +24,14 @@ public class Room {
   public Room(String description) {
     this.description = description;
     exits = new ArrayList<Exit>();
+    items = new ArrayList<Item>();
   }
 
   public Room() {
     roomName = "DEFAULT ROOM";
     description = "DEFAULT DESCRIPTION";
     exits = new ArrayList<Exit>();
+    items = new ArrayList<Item>();
   }
 
   public void addExit(Exit exit) throws Exception {
@@ -90,7 +92,7 @@ public class Room {
     return null;
   }
 
-  public void addItem(Item item){
+  public void addItem(Item item) throws Exception {
     items.add(item);
   }
 
