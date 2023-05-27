@@ -162,6 +162,7 @@ public class Game {
       System.out.println("AAAAAAHHHHHHHHHHHHH");
     }else if (commandWord.equals("cry"))
     System.out.println("Crying won't help you =)");
+    return false;
     
   }
 
@@ -201,7 +202,22 @@ public class Game {
     }
     String item = command.getSecondWord();
     Item currItem = null;
-    //validItems in the room
+
+    //assuming getValidItems() returns a valid list of items in the room
+
+    //List<Item> validItems = getValidItems();
+
+    for (Item validItem : validItems) {
+      if (validItem.getName().equalsIgnoreCase(item)) {
+        currItem = validItem;
+        validItems.remove(validItem);
+      }
+      if (currItem==null){
+        System.out.println("This item doesn't exist or it isn't here");
+      }else {
+        System.out.println("You have taken the " + currItem.getName());
+      }
+    }
 
       //need way to get all the valid items in the room and check if secondWord matches
       //once item is added remove it from list of items in room
