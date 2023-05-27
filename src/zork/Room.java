@@ -7,7 +7,7 @@ public class Room {
   private String roomName;
   private String description;
   private ArrayList<Exit> exits;
-  private boolean missionComplete;
+  private ArrayList<Item> items;
 
   public ArrayList<Exit> getExits() {
     return exits;
@@ -24,12 +24,14 @@ public class Room {
   public Room(String description) {
     this.description = description;
     exits = new ArrayList<Exit>();
+    items = new ArrayList<Item>();
   }
 
   public Room() {
     roomName = "DEFAULT ROOM";
     description = "DEFAULT DESCRIPTION";
     exits = new ArrayList<Exit>();
+    items = new ArrayList<Item>();
   }
 
   public void addExit(Exit exit) throws Exception {
@@ -88,6 +90,14 @@ public class Room {
 
     System.out.println(direction + " is not a valid direction.");
     return null;
+  }
+
+  public void addItem(Item item) throws Exception {
+    items.add(item);
+  }
+
+  public ArrayList<Item> getItems(){
+    return items;
   }
 
   /*
