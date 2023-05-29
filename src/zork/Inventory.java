@@ -26,8 +26,10 @@ public class Inventory {
   }
 
   public boolean addItem(Item item) {
-    if (item.getWeight() + currentWeight <= maxWeight)
+    if (item.getWeight() + currentWeight <= maxWeight) {
+      currentWeight += item.getWeight();
       return items.add(item);
+    }
     else {
       System.out.println("Sorry...your backpack is full");
       return false;
@@ -55,10 +57,14 @@ public class Inventory {
   }
   
   public void display(){
+    System.out.println("       ");
+    System.out.println("Inventory:");
     for(Item i: items){
       System.out.println("-->" + i.getName());
     }
-    System.out.println("Your backpack is " + (int)(getCurrentWeight()/maxWeight) + "% full");
+    double ratio = (double)getCurrentWeight()/maxWeight;
+    double rounded = Math.round(ratio*100.0)/100.0;
+    System.out.println("-->" + "Your backpack is " + rounded + "% full");
   }
 
   public boolean hasItem(String itemName){

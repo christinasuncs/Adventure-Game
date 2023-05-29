@@ -16,7 +16,7 @@ public class Game {
 
   private Parser parser;
   private Room currentRoom;
-  private Inventory inventory = new Inventory(100);
+  private Inventory inventory = new Inventory(10);
   private ArrayList<Item> validItems = inventory.getInventory();
   public static ArrayList<Item> itemsMap = new ArrayList<Item>();
   /**
@@ -244,11 +244,11 @@ public class Game {
 
     //List<Item> validItems = getValidItems();
 
-    for (Item validItem : validItems) {
+    for (Item validItem : itemsMap) {
       if (validItem.getName().equalsIgnoreCase(item)) {
         currItem = validItem;
-        validItems.remove(validItem);
       }
+    }
       if (currItem==null){
         System.out.println("This item doesn't exist or it isn't here");
       }
@@ -256,7 +256,6 @@ public class Game {
         //currentRoom.removeItem(currItem);
         System.out.println("You have taken the " + currItem.getName());
       }
-    }
 
       //need way to get all the valid items in the room and check if secondWord matches
       //once item is added remove it from list of items in room
@@ -265,7 +264,7 @@ public class Game {
 
   private void eat(Command command) {
     if(!command.hasSecondWord()){ //need an item to be able to eat
-      System.out.println("You can't eat air, can you?");
+      System.out.println("You can't eat something you don't have, can you?");
       return;
     }
     String item = command.getSecondWord();
@@ -287,7 +286,15 @@ public class Game {
         if("cookie".equals(currItem.getName())){  //if the item is the cookie, should give user key
           System.out.println("You bite into something hard, almost chipping your tooth.");
           System.out.println("Inside the cookie is a key!");
-          //inventory.addItem(key);
+          Item key = new Item();
+          for(Item i: itemsMap){
+            if(i.getName().equals("key")){
+              key = i;
+            }
+          }
+          if(key!= null){
+            inventory.addItem(key);
+          }
         }
       inventory.removeItem(currItem.getName()); //take out item from inventory bc can only eat once
     }
