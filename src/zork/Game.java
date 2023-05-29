@@ -162,22 +162,23 @@ public class Game {
     } else if(commandWord.equals("drop")){
       if(!command.hasSecondWord()){
         System.out.println("What do you want to drop?");
-      } else
+      } else {
           inventory.removeItem(command.getSecondWord());
+      }
     } else if(commandWord.equals("take")){
         take(command);
     } else if(commandWord.equals("give")){
         give(command);
     } else if(commandWord.equals("find")){
         find(command);
-    }else if (commandWord.equals("sing")){
+    } else if (commandWord.equals("sing")){
       System.out.println("lalalalala");
-    }else if (commandWord.equals("scream")){
+    } else if (commandWord.equals("scream")){
       System.out.println("AAAAAAHHHHHHHHHHHHH");
-    }else if (commandWord.equals("cry"))
+    } else if (commandWord.equals("cry")) {
       System.out.println("Crying won't help you =)");
-    return false;
-    
+    }
+      return false;
   }
 
   // implementations of user commands:
