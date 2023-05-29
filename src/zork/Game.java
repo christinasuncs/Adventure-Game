@@ -113,7 +113,7 @@ public class Game {
       }
 
     }
-    System.out.println("Thank you for playing.  Good bye.");
+    System.out.println("Thank you for playing. Good bye.");
   }
 
   /**
@@ -392,5 +392,18 @@ public class Game {
       currentRoom = nextRoom;
       System.out.println(currentRoom.longDescription());
     }
+
   }
+  private int points = 0;
+
+// ...
+
+private void incrementPoints(Item item) {
+  if (item.isTask()) {
+    points += 10; // You can adjust the points increment as needed
+    //item.isTask()(false); // Mark the task as completed so it cannot be completed again
+    System.out.println("You completed a task and earned 10 points!");
+    System.out.println("Total points: " + points);
+  }
+}
 }
