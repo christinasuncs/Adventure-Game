@@ -251,7 +251,9 @@ public class Game {
       }
       if (currItem==null){
         System.out.println("This item doesn't exist or it isn't here");
-      }else {
+      }
+      if(inventory.addItem(currItem)){
+        //currentRoom.removeItem(currItem);
         System.out.println("You have taken the " + currItem.getName());
       }
     }
