@@ -64,6 +64,10 @@ public class Item extends OpenableObject {
     return isTask;
   }
 
+  public void setTask(boolean b){
+    isTask = b;
+  }
+
   public String getDescription(){
     return description;
   }

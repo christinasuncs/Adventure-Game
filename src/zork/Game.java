@@ -19,6 +19,7 @@ public class Game {
   private Inventory inventory = new Inventory(10);
   private ArrayList<Item> validItems = inventory.getInventory();
   public static ArrayList<Item> itemsMap = new ArrayList<Item>();
+  private static int points = 0;
   /**
    * Create the game and initialise its internal map.
    */
@@ -173,6 +174,8 @@ public class Game {
       System.out.println("AAAAAAHHHHHHHHHHHHH");
     } else if (commandWord.equals("cry")) {
       System.out.println("Crying won't help you =)");
+    }else if (commandWord.equals("look")){
+      look(command);
     }
       return false;
   }
@@ -192,9 +195,7 @@ public class Game {
           currentRoom.removeItem(i);
         }
       }
-
       inventory.removeItem(item);
-
     }
   }
 
@@ -239,14 +240,12 @@ public class Game {
       System.out.println("You don't have this item to give.");
       return;
     } 
-    // else if(currItem.isTask()){
-    //   //increment points
-    //   //set isTask to false so cannot complete task more than once
-    //   //only items that we need to give are tasks
-
-    // }
+    else if(currItem.isTask()){
+      incrementPoints();
+      currItem.setTask(false);
+    }
   }
-
+   
   private void take(Command command) {
     if(!command.hasSecondWord()){
       System.out.println("What do you want to take?");
@@ -293,6 +292,8 @@ public class Game {
         if("cookie".equals(currItem.getName())){  //if the item is the cookie, should give user key
           System.out.println("You bite into something hard, almost chipping your tooth.");
           System.out.println("Inside the cookie is a key!");
+          incrementPoints();
+          currItem.setTask(false);  //cookie item is no longer a task
           Item key = new Item();
           for(Item i: itemsMap){
             if(i.getName().equals("key")){
@@ -339,8 +340,6 @@ public class Game {
     } else{ //assume that by asking to "use" an item, the player wants to open it. 
       open(command);
     }
-
-    
   }
 
   private void open(Command command) {  //will need to find a way to check if the object is in the room
@@ -418,16 +417,16 @@ public class Game {
     }
 
   }
-  private int points = 0;
+  private void look(Command command){
+    System.out.println("You're looking around the room.");
+    System.out.println(currentRoom.longDescription());
+  }
 
-// ...
 
-private void incrementPoints(Item item) {
-  if (item.isTask()) {
-    points += 10; // You can adjust the points increment as needed
-    //item.isTask()(false); // Mark the task as completed so it cannot be completed again
+private void incrementPoints(int i) {
+    points += i;
     System.out.println("You completed a task and earned 10 points!");
     System.out.println("Total points: " + points);
-  }
 }
+
 }
