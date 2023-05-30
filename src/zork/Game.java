@@ -6,6 +6,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+
+import javax.lang.model.util.ElementScanner14;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -241,7 +244,7 @@ public class Game {
       return;
     } 
     else if(currItem.isTask()){
-      incrementPoints();
+      incrementPoints(10);
       currItem.setTask(false);
     }
   }
@@ -292,7 +295,7 @@ public class Game {
         if("cookie".equals(currItem.getName())){  //if the item is the cookie, should give user key
           System.out.println("You bite into something hard, almost chipping your tooth.");
           System.out.println("Inside the cookie is a key!");
-          incrementPoints();
+          incrementPoints(5);
           currItem.setTask(false);  //cookie item is no longer a task
           Item key = new Item();
           for(Item i: itemsMap){
@@ -337,10 +340,20 @@ public class Game {
     }
     if(currItem.canEat()){  //assume that if the item is a food, the player wants to eat it.
       eat(command);
-    } else{ //assume that by asking to "use" an item, the player wants to open it. 
+    } else if(currItem.getName().equals("key")){
+      unlock();
+    } //assume that by asking to "use" an item, the player wants to open it. 
       open(command);
+  }
+
+  private void unlock() {
+    ArrayList<Exit> exits = currentRoom.getExits();
+    for(Exit e: exits){
+      e.setLocked(false);
     }
   }
+
+
 
   private void open(Command command) {  //will need to find a way to check if the object is in the room
     if(!command.hasSecondWord()){
