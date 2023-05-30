@@ -40,7 +40,11 @@
             "id": "wrapper",
             "name": "wrapper",
             "description": "This is a wrapper.",
+<<<<<<< HEAD
             "room": "G11CA",
+=======
+            "room": "Hallway1",
+>>>>>>> 79831925ca0a916d6932e576aad47dbae04c84e2
             "weight": 1,
             "canEat": false,
             "isTask": false
@@ -49,7 +53,11 @@
             "id": "note",
             "name": "note",
             "description": "This is a note, it may have a message.",
+<<<<<<< HEAD
             "room": "Hallway4",
+=======
+            "room": "G11CA",
+>>>>>>> 79831925ca0a916d6932e576aad47dbae04c84e2
             "weight": 1,
             "canEat": false,
             "isTask": false
@@ -64,9 +72,15 @@
             "isTask": false
         },
         {
+<<<<<<< HEAD
             "id": "dumbbell",
             "name": "dumbbell",
             "description": "This is a dumbbell, it weighs 100 lbs.",
+=======
+            "id": "dumbell",
+            "name": "dumbell",
+            "description": "This is a dumbell, it weighs 100 lbs.",
+>>>>>>> 79831925ca0a916d6932e576aad47dbae04c84e2
             "room": "FitnessRoom",
             "weight": 100,
             "canEat": false,
@@ -75,7 +89,11 @@
         {
             "id": "book",
             "name": "book",
+<<<<<<< HEAD
             "description": "This is a book called 101 Ways to Destroy Reeds.",
+=======
+            "description": "This is a book called A Thousand Splendid Suns.",
+>>>>>>> 79831925ca0a916d6932e576aad47dbae04c84e2
             "room": "Library",
             "weight": 5,
             "canEat": false,
@@ -94,7 +112,11 @@
             "id": "card",
             "name": "card",
             "description": "This is a lunch card you can use to purchase food and beverages.",
+<<<<<<< HEAD
             "room": "RestRoom2",
+=======
+            "room": "MusicRoom",
+>>>>>>> 79831925ca0a916d6932e576aad47dbae04c84e2
             "weight": 1,
             "canEat": false,
             "isTask": true

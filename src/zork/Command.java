@@ -21,7 +21,8 @@ public class Command {
   public String getCommandWord() {
     if(isUnknown())
     return null;
-    else return getCommandWord();
+    else 
+    return commandWord;
   }
 
   /**

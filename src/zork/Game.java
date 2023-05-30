@@ -16,16 +16,25 @@ public class Game {
 
   private Parser parser;
   private Room currentRoom;
-  private Inventory inventory = new Inventory(100);
-  ArrayList<Item> validItems = inventory.getInventory();
-
+  private Inventory inventory = new Inventory(10);
+  private ArrayList<Item> validItems = inventory.getInventory();
+  public static ArrayList<Item> itemsMap = new ArrayList<Item>();
   /**
    * Create the game and initialise its internal map.
    */
   public Game() {
     try {
       initRooms("src\\zork\\data\\rooms.json");
+      initItems("src\\zork\\data\\items.json");
+
       currentRoom = roomMap.get("106");
+
+      for(Item item: itemsMap){
+        String itemRoom = item.getRoom();
+        Room room = roomMap.get(itemRoom);
+        room.addItem(item);
+      }
+
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -65,6 +74,27 @@ public class Game {
   }
 
   //We need to initialize the items here once we create the items.json
+  private void initItems(String fileName) throws Exception {
+    Path path = Path.of(fileName);
+    String jsonString = Files.readString(path);
+    JSONParser parser = new JSONParser();
+    JSONObject json = (JSONObject) parser.parse(jsonString);
+
+    JSONArray jsonItems = (JSONArray) json.get("items");
+
+    for(Object itemObj : jsonItems) {
+      Item item;
+      String itemName = (String) ((JSONObject) itemObj).get("name");
+      String itemId = (String) ((JSONObject) itemObj).get("id");
+      String itemDescription = (String) ((JSONObject) itemObj).get("description");
+      String itemRoom = (String) ((JSONObject) itemObj).get("room");
+      int itemWeight = (int)((long)((JSONObject) itemObj).get("weight"));
+      boolean itemCanEat = (boolean) ((JSONObject) itemObj).get("canEat");
+      boolean itemIsTask = (boolean) ((JSONObject) itemObj).get("isTask");
+      item = new Item(itemWeight, itemName,false, itemCanEat, itemIsTask, itemRoom, itemDescription);
+      itemsMap.add(item);
+    }
+  }
 
   /**
    * Main play routine. Loops until end of play.
@@ -83,7 +113,7 @@ public class Game {
       }
 
     }
-    System.out.println("Thank you for playing.  Good bye.");
+    System.out.println("Thank you for playing. Good bye.");
   }
 
   /**
@@ -130,20 +160,66 @@ public class Game {
     } else if(commandWord.equals("i") || commandWord.equals("inventory")){
       inventory.display();
     } else if(commandWord.equals("drop")){
-      if(!command.hasSecondWord()){
-        System.out.println("What do you want to drop?");
-      } else
-          inventory.removeItem(command.getSecondWord());
+      drop(command);
     } else if(commandWord.equals("take")){
         take(command);
     } else if(commandWord.equals("give")){
         give(command);
+    } else if(commandWord.equals("find")){
+        find(command);
+    } else if (commandWord.equals("sing")){
+      System.out.println("lalalalala");
+    } else if (commandWord.equals("scream")){
+      System.out.println("AAAAAAHHHHHHHHHHHHH");
+    } else if (commandWord.equals("cry")) {
+      System.out.println("Crying won't help you =)");
     }
-    return false;
+      return false;
   }
 
   // implementations of user commands:
 
+
+  private void drop(Command command) {
+    if(!command.hasSecondWord()){
+      System.out.println("What do you want to drop?");
+    } else {
+      String item = command.getSecondWord();
+      validItems = inventory.getInventory();
+  
+      for(Item i : validItems){
+        if(i.getName().equals(item)){
+          currentRoom.removeItem(i);
+        }
+      }
+
+      inventory.removeItem(item);
+
+    }
+  }
+
+  private void find(Command command) {
+    if(!command.hasSecondWord()){
+      System.out.println("What do you want to find?");
+      return;
+    }
+    String item = command.getSecondWord();
+    Item currItem = null;
+    for(Item i: currentRoom.getItems()){
+      if(i.getName().equals(item)){
+        currItem = i;
+      }
+    }
+    if(currItem != null){
+      inventory.addItem(currItem);
+      System.out.println("You found " + item + "!");
+      currentRoom.removeItem(currItem);
+    } else {
+      System.out.println("There is no" + item + "in this room");
+    }
+
+    
+  }
 
   private void give(Command command) {
     if(!command.hasSecondWord()){
@@ -176,18 +252,26 @@ public class Game {
       System.out.println("What do you want to take?");
       return;
     }
+
     String item = command.getSecondWord();
     Item currItem = null;
-    //validItems in the room
 
-      //need way to get all the valid items in the room and check if secondWord matches
-      //once item is added remove it from list of items in room
-
+    for (Item validItem : currentRoom.getItems()) {
+      if (validItem.getName().equalsIgnoreCase(item)) {
+        currItem = validItem;
+      }
+    }
+      if (currItem == null){
+        System.out.println("This item is not available in the room");
+      } else if(inventory.addItem(currItem)){
+        currentRoom.removeItem(currItem);
+        System.out.println("You have taken the " + currItem.getName());
+      }
   }
 
   private void eat(Command command) {
     if(!command.hasSecondWord()){ //need an item to be able to eat
-      System.out.println("You can't eat air, can you?");
+      System.out.println("You can't eat something you don't have, can you?");
       return;
     }
     String item = command.getSecondWord();
@@ -209,7 +293,16 @@ public class Game {
         if("cookie".equals(currItem.getName())){  //if the item is the cookie, should give user key
           System.out.println("You bite into something hard, almost chipping your tooth.");
           System.out.println("Inside the cookie is a key!");
-          //inventory.addItem(key);
+          Item key = new Item();
+          for(Item i: itemsMap){
+            if(i.getName().equals("key")){
+              key = i;
+            }
+          }
+          if(key!= null){ //adds the key to inventory
+            inventory.addItem(key);
+            currentRoom.removeItem(key);
+          }
         }
       inventory.removeItem(currItem.getName()); //take out item from inventory bc can only eat once
     }
@@ -257,9 +350,25 @@ public class Game {
     }
     String name = command.getSecondWord();
     Item currItem = null;
-    //get rooms current items
 
-    
+    for (int i = 0; i < itemsMap.size(); i++) {
+      Item curr = itemsMap.get(i);
+
+      if(curr.getName().equals(name)){
+        currItem = curr;
+      }
+    }
+
+    boolean isopen = currItem.isOpenable();
+
+    if(isopen == false){
+      System.out.println("This object is not openable.");
+    }
+
+    else{
+      
+    }
+    //get rooms current items    
   }
 
   /**
@@ -307,5 +416,18 @@ public class Game {
       currentRoom = nextRoom;
       System.out.println(currentRoom.longDescription());
     }
+
   }
+  private int points = 0;
+
+// ...
+
+private void incrementPoints(Item item) {
+  if (item.isTask()) {
+    points += 10; // You can adjust the points increment as needed
+    //item.isTask()(false); // Mark the task as completed so it cannot be completed again
+    System.out.println("You completed a task and earned 10 points!");
+    System.out.println("Total points: " + points);
+  }
+}
 }
