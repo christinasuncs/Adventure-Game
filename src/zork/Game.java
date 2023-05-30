@@ -193,9 +193,7 @@ public class Game {
           currentRoom.removeItem(i);
         }
       }
-
       inventory.removeItem(item);
-
     }
   }
 
@@ -245,7 +243,7 @@ public class Game {
       currItem.setTask(false);
     }
   }
-
+   
   private void take(Command command) {
     if(!command.hasSecondWord()){
       System.out.println("What do you want to take?");
@@ -292,6 +290,8 @@ public class Game {
         if("cookie".equals(currItem.getName())){  //if the item is the cookie, should give user key
           System.out.println("You bite into something hard, almost chipping your tooth.");
           System.out.println("Inside the cookie is a key!");
+          incrementPoints();
+          currItem.setTask(false);  //cookie item is no longer a task
           Item key = new Item();
           for(Item i: itemsMap){
             if(i.getName().equals("key")){
@@ -338,8 +338,6 @@ public class Game {
     } else{ //assume that by asking to "use" an item, the player wants to open it. 
       open(command);
     }
-
-    
   }
 
   private void open(Command command) {  //will need to find a way to check if the object is in the room
