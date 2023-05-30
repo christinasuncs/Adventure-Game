@@ -179,6 +179,10 @@ public class Game {
       System.out.println("Crying won't help you =)");
     }else if (commandWord.equals("look")){
       look(command);
+    }else if (commandWord.equals("fight")){
+      System.out.println("You're not a good fighter Christina =)");
+    }else if(commandWord.equals("throw")){
+      System.out.println("Remember you aren't good at throwing");
     }
       return false;
   }
