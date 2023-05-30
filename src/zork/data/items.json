@@ -19,8 +19,8 @@
             "isTask": true
         },
         {
-            "id": "fire extinguisher",
-            "name": "fire extinguisher",
+            "id": "extinguisher",
+            "name": "extinguisher",
             "description": "This is a fire extinguisher.",
             "room": "ChemLab",
             "weight": 10,
@@ -28,8 +28,8 @@
             "isTask": true
         },
         {
-            "id": "button to lower net",
-            "name": "button to lower net",
+            "id": "button",
+            "name": "button",
             "description": "This is a button used to lower and lift the basketball net.",
             "room": "Gym",
             "weight": 1,
@@ -91,8 +91,8 @@
             "isTask": true
         },
         {
-            "id": "lunch card",
-            "name": "lunch card",
+            "id": "card",
+            "name": "card",
             "description": "This is a lunch card you can use to purchase food and beverages.",
             "room": "RestRoom2",
             "weight": 1,
