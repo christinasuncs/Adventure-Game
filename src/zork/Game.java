@@ -173,6 +173,8 @@ public class Game {
       System.out.println("AAAAAAHHHHHHHHHHHHH");
     } else if (commandWord.equals("cry")) {
       System.out.println("Crying won't help you =)");
+    }else if (commandWord.equals("look")){
+      look();
     }
       return false;
   }
@@ -400,6 +402,10 @@ public class Game {
       System.out.println(currentRoom.longDescription());
     }
 
+  }
+  private void look(){
+    System.out.println("You're looking around the room.");
+    System.out.println(currentRoom.longDescription());
   }
 
 
