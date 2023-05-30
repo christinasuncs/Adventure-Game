@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -252,7 +254,7 @@ public class Game {
       return;
     } 
     else if(currItem.isTask()){
-      incrementPoints();
+      incrementPoints(10);
       currItem.setTask(false);
     }
   }
@@ -303,7 +305,7 @@ public class Game {
         if("cookie".equals(currItem.getName())){  //if the item is the cookie, should give user key
           System.out.println("You bite into something hard, almost chipping your tooth.");
           System.out.println("Inside the cookie is a key!");
-          incrementPoints();
+          incrementPoints(5);
           currItem.setTask(false);  //cookie item is no longer a task
           Item key = new Item();
           for(Item i: itemsMap){
@@ -348,10 +350,20 @@ public class Game {
     }
     if(currItem.canEat()){  //assume that if the item is a food, the player wants to eat it.
       eat(command);
-    } else{ //assume that by asking to "use" an item, the player wants to open it. 
+    } else if(currItem.getName().equals("key")){
+      unlock();
+    } //assume that by asking to "use" an item, the player wants to open it. 
       open(command);
     }
+
+  private void unlock() {
+    ArrayList<Exit> exits = currentRoom.getExits();
+    for(Exit e: exits){
+      e.setLocked(false);
   }
+  }
+
+
 
   private void open(Command command) {  //will need to find a way to check if the object is in the room
     if(!command.hasSecondWord()){
@@ -360,12 +372,14 @@ public class Game {
     }
     String name = command.getSecondWord();
     Item currItem = null;
+    int n = 0;
 
     for (int i = 0; i < itemsMap.size(); i++) {
-      Item curr = itemsMap.get(i);
+      Item curr = itemsMap.get(i);      
 
       if(curr.getName().equals(name)){
         currItem = curr;
+        n = i;
       }
     }
 
@@ -376,7 +390,28 @@ public class Game {
     }
 
     else{
-      
+      if (currItem.getName().equals("chips")){
+        System.out.println("You open the bag of chips and find some delicous sunchips to munch on.");
+        currItem.setOpenable(false);
+        Item chips = currItem;
+        itemsMap.set(n, chips);
+      }
+
+      else if(currItem.getName().equals("wrapper")){
+        System.out.println("You open the wrapper and finds some moldy, 1-year-old mentos that are as hard as rock.");
+        currItem.setOpenable(false);
+        Item wrapper = currItem;
+        itemsMap.set(n, wrapper);
+      }
+
+      else {
+        System.out.println("You open the book and find a diagram of reeds being crushed by rocks.");
+        currItem.setOpenable(false);
+        Item book = currItem;
+        itemsMap.set(n, book);
+      }
+
+
     }
     //get rooms current items    
   }
