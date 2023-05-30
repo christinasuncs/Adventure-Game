@@ -92,8 +92,12 @@ public class Room {
     return null;
   }
 
-  public void addItem(Item item) throws Exception {
+  public void addItem(Item item) {
     items.add(item);
+  }
+
+  public void removeItem(Item item){
+    items.remove(item);
   }
 
   public ArrayList<Item> getItems(){
