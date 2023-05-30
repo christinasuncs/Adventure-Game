@@ -7,7 +7,8 @@
             "room": "106",
             "weight": 5,
             "canEat": true,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "key",
@@ -16,7 +17,8 @@
             "room": "106",
             "weight": 3,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "extinguisher",
@@ -25,7 +27,8 @@
             "room": "ChemLab",
             "weight": 10,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "button",
@@ -34,33 +37,28 @@
             "room": "Gym",
             "weight": 1,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "wrapper",
             "name": "wrapper",
             "description": "This is a wrapper.",
-<<<<<<< HEAD
             "room": "G11CA",
-=======
-            "room": "Hallway1",
->>>>>>> 79831925ca0a916d6932e576aad47dbae04c84e2
             "weight": 1,
             "canEat": false,
-            "isTask": false
+            "isTask": false,
+            "isOpenable": true
         },
         {
             "id": "note",
             "name": "note",
             "description": "This is a note, it may have a message.",
-<<<<<<< HEAD
             "room": "Hallway4",
-=======
-            "room": "G11CA",
->>>>>>> 79831925ca0a916d6932e576aad47dbae04c84e2
             "weight": 1,
             "canEat": false,
-            "isTask": false
+            "isTask": false,
+            "isOpenable": false
         },
         {
             "id": "chips",
@@ -69,35 +67,28 @@
             "room": "Cafeteria",
             "weight": 3,
             "canEat": true,
-            "isTask": false
+            "isTask": false,
+            "isOpenable": true
         },
         {
-<<<<<<< HEAD
             "id": "dumbbell",
             "name": "dumbbell",
             "description": "This is a dumbbell, it weighs 100 lbs.",
-=======
-            "id": "dumbell",
-            "name": "dumbell",
-            "description": "This is a dumbell, it weighs 100 lbs.",
->>>>>>> 79831925ca0a916d6932e576aad47dbae04c84e2
             "room": "FitnessRoom",
             "weight": 100,
             "canEat": false,
-            "isTask": false
+            "isTask": false,
+            "isOpenable": false
         },
         {
             "id": "book",
             "name": "book",
-<<<<<<< HEAD
             "description": "This is a book called 101 Ways to Destroy Reeds.",
-=======
-            "description": "This is a book called A Thousand Splendid Suns.",
->>>>>>> 79831925ca0a916d6932e576aad47dbae04c84e2
             "room": "Library",
             "weight": 5,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": true
         },
         {
             "id": "rag",
@@ -106,20 +97,18 @@
             "room": "AlumniHall",
             "weight": 2,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "card",
             "name": "card",
             "description": "This is a lunch card you can use to purchase food and beverages.",
-<<<<<<< HEAD
             "room": "RestRoom2",
-=======
-            "room": "MusicRoom",
->>>>>>> 79831925ca0a916d6932e576aad47dbae04c84e2
             "weight": 1,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "trophy",
@@ -128,7 +117,8 @@
             "room": "BusinessRoom",
             "weight": 3,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         }
     ]
 }
