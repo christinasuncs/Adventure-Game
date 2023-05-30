@@ -160,11 +160,7 @@ public class Game {
     } else if(commandWord.equals("i") || commandWord.equals("inventory")){
       inventory.display();
     } else if(commandWord.equals("drop")){
-      if(!command.hasSecondWord()){
-        System.out.println("What do you want to drop?");
-      } else {
-          inventory.removeItem(command.getSecondWord());
-      }
+      drop(command);
     } else if(commandWord.equals("take")){
         take(command);
     } else if(commandWord.equals("give")){
@@ -184,6 +180,24 @@ public class Game {
   // implementations of user commands:
 
 
+  private void drop(Command command) {
+    if(!command.hasSecondWord()){
+      System.out.println("What do you want to drop?");
+    } else {
+      String item = command.getSecondWord();
+      validItems = inventory.getInventory();
+  
+      for(Item i : validItems){
+        if(i.getName().equals(item)){
+          currentRoom.removeItem(i);
+        }
+      }
+
+      inventory.removeItem(item);
+
+    }
+  }
+
   private void find(Command command) {
     if(!command.hasSecondWord()){
       System.out.println("What do you want to find?");
@@ -199,6 +213,7 @@ public class Game {
     if(currItem != null){
       inventory.addItem(currItem);
       System.out.println("You found " + item + "!");
+      currentRoom.removeItem(currItem);
     } else {
       System.out.println("There is no" + item + "in this room");
     }
@@ -237,29 +252,21 @@ public class Game {
       System.out.println("What do you want to take?");
       return;
     }
+
     String item = command.getSecondWord();
     Item currItem = null;
 
-    //assuming getValidItems() returns a valid list of items in the room
-
-    //List<Item> validItems = getValidItems();
-
-    for (Item validItem : itemsMap) {
+    for (Item validItem : currentRoom.getItems()) {
       if (validItem.getName().equalsIgnoreCase(item)) {
         currItem = validItem;
       }
     }
-      if (currItem==null){
-        System.out.println("This item doesn't exist or it isn't here");
-      }
-      if(inventory.addItem(currItem)){
-        //currentRoom.removeItem(currItem);
+      if (currItem == null){
+        System.out.println("This item is not available in the room");
+      } else if(inventory.addItem(currItem)){
+        currentRoom.removeItem(currItem);
         System.out.println("You have taken the " + currItem.getName());
       }
-
-      //need way to get all the valid items in the room and check if secondWord matches
-      //once item is added remove it from list of items in room
-
   }
 
   private void eat(Command command) {
@@ -292,8 +299,9 @@ public class Game {
               key = i;
             }
           }
-          if(key!= null){
+          if(key!= null){ //adds the key to inventory
             inventory.addItem(key);
+            currentRoom.removeItem(key);
           }
         }
       inventory.removeItem(currItem.getName()); //take out item from inventory bc can only eat once
