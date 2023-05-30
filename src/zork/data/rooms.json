@@ -4,6 +4,7 @@
       "id": "106",
       "name": "106",
       "description": "You are in classroom 106, it is empty, you see a cookie on the desk.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": true,
@@ -17,6 +18,7 @@
       "id": "G12CA",
       "name": "G12CA",
       "description": "You are in the Grade 12 Common Area.",
+      "dialogue": "James: Hey! Can you help me find my ping pong ball? I lost it but I still want to play another match!",
       "exits": [
         {
           "isLocked": false,
@@ -39,6 +41,7 @@
       "id": "ArtRoom",
       "name": "ArtRoom",
       "description": "You are in the Art Room.",
+      "dialogue": "Yolanda: Hi! Could you help me find the green paint?",
       "exits": [
         {
           "isLocked": true,
@@ -51,6 +54,7 @@
       "id": "ChemLab",
       "name": "ChemLab",
       "description": "You are in the Chem Lab.",
+      "dialogue": "Ms. Lee: AHH! I was experimenting with potassium and water and the chemical reaction got a bit out of hand...",
       "exits": [
         {
           "isLocked": false,
@@ -63,6 +67,7 @@
       "id": "Hallway1",
       "name": "Hallway1",
       "description": "You are in the Hallway.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -85,6 +90,7 @@
       "id": "Gym",
       "name": "Gym",
       "description": "You are in the Gym.",
+      "dialogue": "Ms. Deeks: Hey! I just finished coaching Sr Frisbee, could you lend me a hand and help put the nets up",
       "exits": [
         {
           "isLocked": false,
@@ -97,6 +103,7 @@
       "id": "StairwayF1",
       "name": "StairwayF1",
       "description": "You are in the Stairway.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -114,6 +121,7 @@
       "id": "StairwayF2",
       "name": "StairwayF2",
       "description": "You are in the Stairway.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -131,6 +139,7 @@
       "id": "G11CA",
       "name": "G11CA",
       "description": "You are in the Grade 11 Common Area.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -148,6 +157,7 @@
       "id": "Hallway4",
       "name": "Hallway4",
       "description": "You are in the Hallway.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -169,6 +179,7 @@
       "id": "Hallway3",
       "name": "Hallway3",
       "description": "You are in the Hallway.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -191,6 +202,7 @@
       "id": "DramaRoom",
       "name": "DramaRoom",
       "description": "You are in the Drama Room.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -203,6 +215,7 @@
       "id": "Theatre",
       "name": "Theare",
       "description": "You are in the Theatre.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -215,6 +228,7 @@
       "id": "RestRoom1",
       "name": "RestRoom1",
       "description": "You are in the Rest Room. Weirdo.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -227,6 +241,7 @@
       "id": "Hallway2",
       "name": "Hallway2",
       "description": "You are in the Hallway.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -254,6 +269,7 @@
       "id": "Cafeteria",
       "name": "Cafeteria",
       "description": "You are in the Cafeteria.",
+      "dialogue": "Rohan: HI uh so I might've forgotten my lunch card at home... could I borrow yours?",
       "exits": [
         {
           "isLocked": false,
@@ -266,6 +282,7 @@
       "id": "FitnessRoom",
       "name": "FitnessRoom",
       "description": "You are in the Fitness Room.",
+      "dialogue": "Thomas: Can you my dumbbell bench press? I'm trying to hit a new PR.",
       "exits": [
         {
           "isLocked": false,
@@ -278,6 +295,7 @@
       "id": "Library",
       "name": "Library",
       "description": "You are in the Library.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -295,6 +313,7 @@
       "id": "AlumniHall",
       "name": "AlumniHall",
       "description": "You are in the AlumniHall.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -317,6 +336,7 @@
       "id": "RestRoom2",
       "name": "RestRoom2",
       "description": "You are in the Rest Room. Weirdo.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -329,6 +349,7 @@
       "id": "MusicRoom",
       "name": "MusicRoom",
       "description": "You are in the Music Room.",
+      "dialogue": "Krrisha: Hey! I left my book in the library, could you grab it for me? Don't lose youself in the halls... :)",
       "exits": [
         {
           "isLocked": false,
@@ -346,6 +367,7 @@
       "id": "Hallway5",
       "name": "Hallway5",
       "description": "You are in the Hallway.",
+      "dialogue": " ",
       "exits": [
         {
           "isLocked": false,
@@ -363,6 +385,7 @@
       "id": "BusinessRoom",
       "name": "BusinessRoom",
       "description": "You are in the Business Room.",
+      "dialogue": "Vanessa: Hey! Could you pass me that rag? I want to polish my DECA Glass.",
       "exits": [
         {
           "isLocked": false,

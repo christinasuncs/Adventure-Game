@@ -6,8 +6,9 @@ public class Room {
 
   private String roomName;
   private String description;
+  private String dialogue;
   private ArrayList<Exit> exits;
-  private boolean missionComplete;
+  private String completionStatement;
 
   public ArrayList<Exit> getExits() {
     return exits;
@@ -111,5 +112,13 @@ public class Room {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public String getDialogue(){
+    return dialogue;
+  }
+
+  public String getCompletionStatement(){
+    return completionStatement;
   }
 }
