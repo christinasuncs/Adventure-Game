@@ -19,6 +19,7 @@ public class Game {
   private Inventory inventory = new Inventory(10);
   private ArrayList<Item> validItems = inventory.getInventory();
   public static ArrayList<Item> itemsMap = new ArrayList<Item>();
+  private static int points = 0;
   /**
    * Create the game and initialise its internal map.
    */
@@ -239,12 +240,10 @@ public class Game {
       System.out.println("You don't have this item to give.");
       return;
     } 
-    // else if(currItem.isTask()){
-    //   //increment points
-    //   //set isTask to false so cannot complete task more than once
-    //   //only items that we need to give are tasks
-
-    // }
+    else if(currItem.isTask()){
+      incrementPoints();
+      currItem.setTask(false);
+    }
   }
 
   private void take(Command command) {
@@ -402,16 +401,12 @@ public class Game {
     }
 
   }
-  private int points = 0;
 
-// ...
 
-private void incrementPoints(Item item) {
-  if (item.isTask()) {
-    points += 10; // You can adjust the points increment as needed
-    //item.isTask()(false); // Mark the task as completed so it cannot be completed again
+private void incrementPoints() {
+    points += 10;
     System.out.println("You completed a task and earned 10 points!");
     System.out.println("Total points: " + points);
-  }
 }
+
 }
