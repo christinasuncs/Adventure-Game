@@ -9,6 +9,13 @@ import java.util.HashMap;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.BufferedInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.URL;
+
 
 public class Game {
 
@@ -433,4 +440,57 @@ private void incrementPoints(int i) {
     System.out.println("Total points: " + points);
 }
 
+  private Clip musicClip;
+
+  public void playMusic(String filePath) {
+    try {
+      File musicFile = new File(filePath);
+      AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
+
+      AudioFormat format = audioStream.getFormat();
+      DataLine.Info info = new DataLine.Info(Clip.class, format);
+      musicClip = (Clip) AudioSystem.getLine(info);
+
+      musicClip.open(audioStream);
+      musicClip.start();
+  } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+      e.printStackTrace();
+  }
+}
+
+public void stopMusic() {
+  if (musicClip != null && musicClip.isRunning()) {
+      musicClip.stop();
+      musicClip.close();
+  }
+}
+
+public static void downloadMusic(String musicUrl, String savePath) {
+  try {
+      URL url = new URL(musicUrl);
+      InputStream in = new BufferedInputStream(url.openStream());
+      FileOutputStream fos = new FileOutputStream(savePath);
+
+      byte[] buffer = new byte[1024];
+      int bytesRead;
+      while ((bytesRead = in.read(buffer, 0, buffer.length)) != -1) {
+          fos.write(buffer, 0, bytesRead);
+      }
+
+      fos.close();
+      in.close();
+  } catch (IOException e) {
+      e.printStackTrace();
+  }
+}
+
+public static void main(String[] args) {
+  String musicUrl = "https://www.youtube.com/watch?v=E-6zrzmAh2s";
+  String savePath = "path/to/save/music/sample.mp3";
+  downloadMusic(musicUrl, savePath);
+
+  // Play the downloaded music
+  Game game = new Game();
+  game.playMusic(savePath);
+}
 }
