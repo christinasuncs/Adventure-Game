@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import javax.lang.model.util.ElementScanner14;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -348,13 +347,13 @@ public class Game {
       unlock();
     } //assume that by asking to "use" an item, the player wants to open it. 
       open(command);
-  }
+    }
 
   private void unlock() {
     ArrayList<Exit> exits = currentRoom.getExits();
     for(Exit e: exits){
       e.setLocked(false);
-    }
+  }
   }
 
 
@@ -366,12 +365,14 @@ public class Game {
     }
     String name = command.getSecondWord();
     Item currItem = null;
+    int n = 0;
 
     for (int i = 0; i < itemsMap.size(); i++) {
-      Item curr = itemsMap.get(i);
+      Item curr = itemsMap.get(i);      
 
       if(curr.getName().equals(name)){
         currItem = curr;
+        n = i;
       }
     }
 
@@ -382,7 +383,28 @@ public class Game {
     }
 
     else{
-      
+      if (currItem.getName().equals("chips")){
+        System.out.println("You open the bag of chips and find some delicous sunchips to munch on.");
+        currItem.setOpenable(false);
+        Item chips = currItem;
+        itemsMap.set(n, chips);
+      }
+
+      else if(currItem.getName().equals("wrapper")){
+        System.out.println("You open the wrapper and finds some moldy, 1-year-old mentos that are as hard as rock.");
+        currItem.setOpenable(false);
+        Item wrapper = currItem;
+        itemsMap.set(n, wrapper);
+      }
+
+      else {
+        System.out.println("You open the book and find a diagram of reeds being crushed by rocks.");
+        currItem.setOpenable(false);
+        Item book = currItem;
+        itemsMap.set(n, book);
+      }
+
+
     }
     //get rooms current items    
   }
