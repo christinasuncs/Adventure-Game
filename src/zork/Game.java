@@ -353,9 +353,25 @@ public class Game {
     }
     String name = command.getSecondWord();
     Item currItem = null;
-    //get rooms current items
 
-    
+    for (int i = 0; i < itemsMap.size(); i++) {
+      Item curr = itemsMap.get(i);
+
+      if(curr.getName().equals(name)){
+        currItem = curr;
+      }
+    }
+
+    boolean isopen = currItem.isOpenable();
+
+    if(isopen == false){
+      System.out.println("This object is not openable.");
+    }
+
+    else{
+      
+    }
+    //get rooms current items    
   }
 
   /**
