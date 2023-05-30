@@ -19,6 +19,7 @@
       "name": "G12CA",
       "description": "You are in the Grade 12 Common Area.",
       "dialogue": "James: Hey! Can you help me find my ping pong ball? I lost it but I still want to play another match!",
+      "completionStatement": "Alan: Hello friend. Today, you have endured a treacherous journey, all in the name of finding a pingpong ball for a James Simmons. The lesson you have yet to learn is that the true essence of this quest lies not in the ping pong ball itself, the real ping pong ball in the friends we made along the way.",
       "exits": [
         {
           "isLocked": false,
@@ -41,7 +42,8 @@
       "id": "ArtRoom",
       "name": "ArtRoom",
       "description": "You are in the Art Room.",
-      "dialogue": "Yolanda: Hi! Could you help me find the green paint?",
+      "dialogue": "Yolanda: Hi! Could you help me find the purple paint?",
+      "completionStatement": "Thank you so much!! I'll show you my painting when I'm done!",
       "exits": [
         {
           "isLocked": true,
@@ -55,6 +57,7 @@
       "name": "ChemLab",
       "description": "You are in the Chem Lab.",
       "dialogue": "Ms. Lee: AHH! I was experimenting with potassium and water and the chemical reaction got a bit out of hand...",
+      "completionStatement": "Thank you so much for extingusing the fire! Good luck with your Functions Exam",
       "exits": [
         {
           "isLocked": false,
@@ -68,6 +71,7 @@
       "name": "Hallway1",
       "description": "You are in the Hallway.",
       "dialogue": " ",
+      "completionStatement": "",
       "exits": [
         {
           "isLocked": false,
@@ -91,6 +95,7 @@
       "name": "Gym",
       "description": "You are in the Gym.",
       "dialogue": "Ms. Deeks: Hey! I just finished coaching Sr Frisbee, could you lend me a hand and help put the nets up",
+      "completionStatement": "Thanks so much for you help! Oh, I heard that there was a ping pong ball in the cafeteria, bit odd but maybe worth checking out",
       "exits": [
         {
           "isLocked": false,
@@ -104,6 +109,7 @@
       "name": "StairwayF1",
       "description": "You are in the Stairway.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -122,6 +128,7 @@
       "name": "StairwayF2",
       "description": "You are in the Stairway.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -140,6 +147,7 @@
       "name": "G11CA",
       "description": "You are in the Grade 11 Common Area.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -158,6 +166,7 @@
       "name": "Hallway4",
       "description": "You are in the Hallway.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -180,6 +189,7 @@
       "name": "Hallway3",
       "description": "You are in the Hallway.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -203,6 +213,7 @@
       "name": "DramaRoom",
       "description": "You are in the Drama Room.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -216,6 +227,7 @@
       "name": "Theare",
       "description": "You are in the Theatre.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -229,6 +241,7 @@
       "name": "RestRoom1",
       "description": "You are in the Rest Room. Weirdo.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -242,6 +255,7 @@
       "name": "Hallway2",
       "description": "You are in the Hallway.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -270,6 +284,7 @@
       "name": "Cafeteria",
       "description": "You are in the Cafeteria.",
       "dialogue": "Rohan: HI uh so I might've forgotten my lunch card at home... could I borrow yours?",
+      "completionStatement": "Thanks!! I'll pay you back next time!",
       "exits": [
         {
           "isLocked": false,
@@ -283,6 +298,7 @@
       "name": "FitnessRoom",
       "description": "You are in the Fitness Room.",
       "dialogue": "Thomas: Can you my dumbbell bench press? I'm trying to hit a new PR.",
+      "completionStatement": "Thanks.",
       "exits": [
         {
           "isLocked": false,
@@ -296,6 +312,7 @@
       "name": "Library",
       "description": "You are in the Library.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -314,6 +331,7 @@
       "name": "AlumniHall",
       "description": "You are in the AlumniHall.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -337,6 +355,7 @@
       "name": "RestRoom2",
       "description": "You are in the Rest Room. Weirdo.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -350,6 +369,7 @@
       "name": "MusicRoom",
       "description": "You are in the Music Room.",
       "dialogue": "Krrisha: Hey! I left my book in the library, could you grab it for me? Don't lose youself in the halls... :)",
+      "completionStatement": "Thank you so so much. Be careful out there..",
       "exits": [
         {
           "isLocked": false,
@@ -368,6 +388,7 @@
       "name": "Hallway5",
       "description": "You are in the Hallway.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": false,
@@ -386,6 +407,7 @@
       "name": "BusinessRoom",
       "description": "You are in the Business Room.",
       "dialogue": "Vanessa: Hey! Could you pass me that rag? I want to polish my DECA Glass.",
+      "completionStatement": "Thank you!!",
       "exits": [
         {
           "isLocked": false,
