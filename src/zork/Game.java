@@ -407,8 +407,8 @@ public class Game {
   }
 
 
-private void incrementPoints() {
-    points += 10;
+private void incrementPoints(int i) {
+    points += i;
     System.out.println("You completed a task and earned 10 points!");
     System.out.println("Total points: " + points);
 }
