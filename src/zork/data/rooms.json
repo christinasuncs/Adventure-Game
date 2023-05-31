@@ -94,7 +94,7 @@
       "id": "Gym",
       "name": "Gym",
       "description": "You are in the Gym.",
-      "dialogue": "Ms. Deeks: Hey! I just finished coaching Sr Frisbee, could you lend me a hand and help put the nets up",
+      "dialogue": "Ms. Deeks: Hey! I just finished coaching Sr Frisbee, could you lend me a hand and help put the nets up?",
       "completionStatement": "Thanks so much for you help! Oh, I heard that there was a ping pong ball in the cafeteria, bit odd but maybe worth checking out",
       "exits": [
         {
