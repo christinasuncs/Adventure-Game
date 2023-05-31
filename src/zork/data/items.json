@@ -55,9 +55,9 @@
             "isTask": false
         },
         {
-            "id": "dumbell",
-            "name": "dumbell",
-            "description": "This is a dumbell, it weighs 100 lbs.",
+            "id": "dumbbell",
+            "name": "dumbbell",
+            "description": "This is a dumbbell, it weighs 100 lbs.",
             "room": "",
             "weight": 100,
             "canEat": false,
@@ -66,7 +66,7 @@
         {
             "id": "book",
             "name": "book",
-            "description": "This is a book called A Thousand Splendid Suns.",
+            "description": "This is a book called 100 Ways To Destroy Sax Reeds.",
             "room": "",
             "weight": 5,
             "canEat": false,
@@ -96,7 +96,16 @@
             "description": "This is a DECA first place trophy from the International Career Development Conference.",
             "room": "",
             "weight": 3,
-            "canEat": true,
+            "canEat": false,
+            "isTask": true
+        },
+        {
+            "id": "paint",
+            "name": "paint",
+            "description": "This is a tube of purple paint.",
+            "room": "ArtRoom",
+            "weight": 2,
+            "canEat": false,
             "isTask": true
         }
     ]
