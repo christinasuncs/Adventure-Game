@@ -24,12 +24,12 @@
         {
           "isLocked": false,
           "direction": "East",
-          "adjacentRoom": "Art Room"
+          "adjacentRoom": "ArtRoom"
         },
         {
           "isLocked": false,
           "direction": "South",
-          "adjacentRoom": "Chem Lab"
+          "adjacentRoom": "ChemLab"
         },
         {
           "isLocked": false,
@@ -329,7 +329,7 @@
     {
       "id": "AlumniHall",
       "name": "AlumniHall",
-      "description": "You are in the AlumniHall.",
+      "description": "You are in the Alumni Hall.",
       "dialogue": " ",
       "completionStatement": " ",
       "exits": [
