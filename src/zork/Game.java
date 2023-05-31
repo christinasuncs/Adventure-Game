@@ -95,7 +95,8 @@ public class Game {
       int itemWeight = (int)((long)((JSONObject) itemObj).get("weight"));
       boolean itemCanEat = (boolean) ((JSONObject) itemObj).get("canEat");
       boolean itemIsTask = (boolean) ((JSONObject) itemObj).get("isTask");
-      item = new Item(itemWeight, itemName,false, itemCanEat, itemIsTask, itemRoom, itemDescription);
+      boolean itemIsOpenable = (boolean) ((JSONObject)itemObj).get("isOpenable");
+      item = new Item(itemWeight, itemName,itemIsOpenable, itemCanEat, itemIsTask, itemRoom, itemDescription);
       itemsMap.add(item);
     }
   }
@@ -346,8 +347,9 @@ public class Game {
       eat(command);
     } else if(currItem.getName().equals("key")){
       unlock();
-    } //assume that by asking to "use" an item, the player wants to open it. 
+    } else {//assume that by asking to "use" an item, the player wants to open it. 
       open(command);
+    }
   }
 
   private void unlock() {
@@ -355,6 +357,7 @@ public class Game {
     for(Exit e: exits){
       e.setLocked(false);
     }
+    System.out.println("You have unlocked the door.");
   }
 
 
