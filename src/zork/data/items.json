@@ -7,7 +7,8 @@
             "room": "",
             "weight": 5,
             "canEat": true,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "key",
@@ -16,7 +17,8 @@
             "room": "",
             "weight": 3,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "fire extinguisher",
@@ -25,7 +27,8 @@
             "room": "",
             "weight": 10,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "wrapper",
@@ -34,7 +37,8 @@
             "room": "",
             "weight": 1,
             "canEat": false,
-            "isTask": false
+            "isTask": false,
+            "isOpenable": true
         },
         {
             "id": "note",
@@ -43,7 +47,8 @@
             "room": "",
             "weight": 1,
             "canEat": false,
-            "isTask": false
+            "isTask": false,
+            "isOpenable": false
         },
         {
             "id": "chips",
@@ -52,7 +57,8 @@
             "room": "",
             "weight": 3,
             "canEat": true,
-            "isTask": false
+            "isTask": false,
+            "isOpenable": true
         },
         {
             "id": "dumbbell",
@@ -61,7 +67,8 @@
             "room": "",
             "weight": 100,
             "canEat": false,
-            "isTask": false
+            "isTask": false,
+            "isOpenable": false
         },
         {
             "id": "book",
@@ -70,7 +77,8 @@
             "room": "",
             "weight": 5,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": true
         },
         {
             "id": "rag",
@@ -79,7 +87,8 @@
             "room": "",
             "weight": 2,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "lunch card",
@@ -88,7 +97,8 @@
             "room": "",
             "weight": 1,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "trophy",
@@ -97,7 +107,8 @@
             "room": "",
             "weight": 3,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": false
         },
         {
             "id": "paint",
@@ -106,7 +117,38 @@
             "room": "ArtRoom",
             "weight": 2,
             "canEat": false,
-            "isTask": true
+            "isTask": true,
+            "isOpenable": true
+        },
+        {
+            "id": "bear",
+            "name": "bear",
+            "description": "This is the pink teddy bear the grade 12s keep in their common area.",
+            "room": "G12CA",
+            "weight": 10,
+            "canEat": false,
+            "isTask": false,
+            "isOpenable": false
+        },
+        {
+            "id": "gum",
+            "name": "gum",
+            "description": "This is a piece of gum someone was too lazy to throw away. Gross.",
+            "room": "StairwayF1",
+            "weight": 1,
+            "canEat": false,
+            "isTask": false,
+            "isOpenable": false
+        },
+        {
+            "id": "skull",
+            "name": "skull",
+            "description": "This is a prop skull. It'll probably be used in the next Shakespeare show from the BVG Players.",
+            "room": "DramaRoom",
+            "weight": 5,
+            "canEat": false,
+            "isTask": false,
+            "isOpenable": false
         }
     ]
 }
