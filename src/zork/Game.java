@@ -190,6 +190,8 @@ public class Game {
       System.out.println("You're not a good fighter Christina =)");
     }else if(commandWord.equals("throw")){
       System.out.println("Remember you aren't good at throwing");
+    } else if(commandWord.equals("unlock")){
+      unlock(command);
     }
       return false;
   }
@@ -352,18 +354,29 @@ public class Game {
     if(currItem.canEat()){  //assume that if the item is a food, the player wants to eat it.
       eat(command);
     } else if(currItem.getName().equals("key")){
-      unlock();
+      unlock(command);
     } else {//assume that by asking to "use" an item, the player wants to open it. 
       open(command);
     }
   }
 
-  private void unlock() {
-    ArrayList<Exit> exits = currentRoom.getExits();
-    for(Exit e: exits){
-      e.setLocked(false);
+  private void unlock(Command command) {
+    if(!command.hasSecondWord()){
+      System.out.println("What do you want to unlock?");
+      return;
     }
-    System.out.println("You have unlocked the door.");
+    String name = command.getSecondWord();
+    if(name.equals("key")){
+      ArrayList<Exit> exits = currentRoom.getExits();
+      for(Exit e: exits){
+        e.setLocked(false);
+      }
+      System.out.println("You have unlocked the door.");
+      inventory.removeItem(name);
+    } else {
+      System.out.println("You cannot unlock this.");
+    }
+
   }
 
 
