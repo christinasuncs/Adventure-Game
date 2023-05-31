@@ -7,11 +7,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import javax.lang.model.util.ElementScanner14;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.BufferedInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.URL;
+
 
 public class Game {
 
@@ -369,12 +375,14 @@ public class Game {
     }
     String name = command.getSecondWord();
     Item currItem = null;
+    int n = 0;
 
     for (int i = 0; i < itemsMap.size(); i++) {
-      Item curr = itemsMap.get(i);
+      Item curr = itemsMap.get(i);      
 
       if(curr.getName().equals(name)){
         currItem = curr;
+        n = i;
       }
     }
 
@@ -385,7 +393,28 @@ public class Game {
     }
 
     else{
-      
+      if (currItem.getName().equals("chips")){
+        System.out.println("You open the bag of chips and find some delicous sunchips to munch on.");
+        currItem.setOpenable(false);
+        Item chips = currItem;
+        itemsMap.set(n, chips);
+      }
+
+      else if(currItem.getName().equals("wrapper")){
+        System.out.println("You open the wrapper and finds some moldy, 1-year-old mentos that are as hard as rock.");
+        currItem.setOpenable(false);
+        Item wrapper = currItem;
+        itemsMap.set(n, wrapper);
+      }
+
+      else {
+        System.out.println("You open the book and find a diagram of reeds being crushed by rocks.");
+        currItem.setOpenable(false);
+        Item book = currItem;
+        itemsMap.set(n, book);
+      }
+
+
     }
     //get rooms current items    
   }
@@ -449,4 +478,57 @@ private void incrementPoints(int i) {
     System.out.println("Total points: " + points);
 }
 
+  private Clip musicClip;
+
+  public void playMusic(String filePath) {
+    try {
+      File musicFile = new File(filePath);
+      AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
+
+      AudioFormat format = audioStream.getFormat();
+      DataLine.Info info = new DataLine.Info(Clip.class, format);
+      musicClip = (Clip) AudioSystem.getLine(info);
+
+      musicClip.open(audioStream);
+      musicClip.start();
+  } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+      e.printStackTrace();
+  }
+}
+
+public void stopMusic() {
+  if (musicClip != null && musicClip.isRunning()) {
+      musicClip.stop();
+      musicClip.close();
+  }
+}
+
+public static void downloadMusic(String musicUrl, String savePath) {
+  try {
+      URL url = new URL(musicUrl);
+      InputStream in = new BufferedInputStream(url.openStream());
+      FileOutputStream fos = new FileOutputStream(savePath);
+
+      byte[] buffer = new byte[1024];
+      int bytesRead;
+      while ((bytesRead = in.read(buffer, 0, buffer.length)) != -1) {
+          fos.write(buffer, 0, bytesRead);
+      }
+
+      fos.close();
+      in.close();
+  } catch (IOException e) {
+      e.printStackTrace();
+  }
+}
+
+public static void main(String[] args) {
+  String musicUrl = "https://www.youtube.com/watch?v=E-6zrzmAh2s";
+  String savePath = "path/to/save/music/sample.mp3";
+  downloadMusic(musicUrl, savePath);
+
+  // Play the downloaded music
+  Game game = new Game();
+  game.playMusic(savePath);
+}
 }
