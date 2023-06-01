@@ -19,8 +19,6 @@
             "canEat": false,
             "isTask": true,
             "isOpenable": false
-            "isTask": true,
-            "isOpenable": false
         },
         {
             "id": "extinguisher",
@@ -40,7 +38,6 @@
             "weight": 1,
             "canEat": false,
             "isTask": true,
-            "isOpenable": false,
             "isOpenable": false
         },
         {
@@ -50,8 +47,6 @@
             "room": "G11CA",
             "weight": 1,
             "canEat": false,
-            "isTask": false,
-            "isOpenable": true
             "isTask": false,
             "isOpenable": true
         },
