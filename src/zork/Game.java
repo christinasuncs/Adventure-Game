@@ -91,7 +91,6 @@ public class Game {
     JSONObject json = (JSONObject) parser.parse(jsonString);
 
     JSONArray jsonItems = (JSONArray) json.get("items");
-    ArrayList<Item> items = new ArrayList<Item>();
 
     for(Object itemObj : jsonItems) {
       Item item;
