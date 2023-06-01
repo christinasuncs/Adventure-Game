@@ -97,12 +97,9 @@ public class Game {
       Item item;
       String itemName = (String) ((JSONObject) itemObj).get("name");
       String itemId = (String) ((JSONObject) itemObj).get("id");
-      String name = (String) ((JSONObject) itemObj).get("name");
-      String keyId = (String) ((JSONObject) itemObj).get("id");
       String itemDescription = (String) ((JSONObject) itemObj).get("description");
       String itemRoom = (String) ((JSONObject) itemObj).get("room");
       int itemWeight = (int)((long)((JSONObject) itemObj).get("weight"));
-      int weight = (int) ((JSONObject) itemObj).get("weight");
       boolean itemCanEat = (boolean) ((JSONObject) itemObj).get("canEat");
       boolean itemIsTask = (boolean) ((JSONObject) itemObj).get("isTask");
       boolean itemIsOpenable = (boolean) ((JSONObject)itemObj).get("isOpenable");
