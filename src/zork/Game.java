@@ -142,6 +142,7 @@ public class Game {
     System.out.println("Type 'help' to see all your available actions");
     System.out.println();
     System.out.println(currentRoom.longDescription());
+    System.out.println(currentRoom.getDialogue());
   }
 
   /**
@@ -194,8 +195,6 @@ public class Game {
       System.out.println("You're not a good fighter Christina =)");
     }else if(commandWord.equals("throw")){
       System.out.println("Remember you aren't good at throwing");
-    } else if(commandWord.equals("unlock")){
-      unlock(command);
     }
       return false;
   }
@@ -360,28 +359,24 @@ public class Game {
       eat(command);
     } else if(currItem.getName().equals("key")){
       unlock(command);
+    } else if(currItem.isTask()){ //if it is a task increment points and display completion statement
+      incrementPoints(5);
+      currItem.setTask(false);
+      System.out.println(currentRoom.getCompletionStatement());
     } else {//assume that by asking to "use" an item, the player wants to open it. 
       open(command);
     }
+    inventory.removeItem(name);
   }
 
   private void unlock(Command command) {
-    if(!command.hasSecondWord()){
-      System.out.println("What do you want to unlock?");
-      return;
-    }
-    String name = command.getSecondWord();
-    if(name.equals("key")){
       ArrayList<Exit> exits = currentRoom.getExits();
       for(Exit e: exits){
         e.setLocked(false);
       }
       System.out.println("You have unlocked the door.");
-      inventory.removeItem(name);
-    } else {
-      System.out.println("You cannot unlock this.");
-    }
-
+      inventory.removeItem("key");
+      incrementPoints(5);
   }
 
 
@@ -488,6 +483,11 @@ public class Game {
   private void look(Command command){
     System.out.println("You're looking around the room.");
     System.out.println(currentRoom.longDescription());
+    ArrayList<Item> roomItems = currentRoom.getItems();
+    System.out.println("You scan the room and see: ");
+    for(Item item: roomItems){
+      System.out.println("-->" + item);
+    }
   }
 
 
