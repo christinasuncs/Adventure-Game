@@ -29,6 +29,7 @@ public class Game {
   private ArrayList<Item> validItems = inventory.getInventory();
   public static ArrayList<Item> itemsMap = new ArrayList<Item>();
   private static int points = 0;
+
   /**
    * Create the game and initialise its internal map.
    */
@@ -38,7 +39,7 @@ public class Game {
       initItems("src\\zork\\data\\items.json");
 
       currentRoom = roomMap.get("106");
-
+      new TimerPrint();
       for(Item item: itemsMap){
         String itemRoom = item.getRoom();
         Room room = roomMap.get(itemRoom);
@@ -549,5 +550,5 @@ public static void main(String[] args) {
   // Play the downloaded music
   Game game = new Game();
   game.playMusic(savePath);
-}
+  }
 }

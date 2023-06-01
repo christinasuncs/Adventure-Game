@@ -2,8 +2,8 @@ package zork;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TimerPrint extends Game{
-    public static void main(String[] args) {
+public class TimerPrint{
+    public TimerPrint() {
         Timer timer = new Timer();
 
         TimerTask task = new TimerTask() {
