@@ -19,7 +19,7 @@
       "name": "G12CA",
       "description": "You are in the Grade 12 Common Area.",
       "dialogue": "James: Hey! Can you help me find my ping pong ball? I lost it but I still want to play another match!",
-      "completionStatement": "Alan: Hello friend. Today, you have endured a treacherous journey, all in the name of finding a pingpong ball for a James Simmons. The lesson you have yet to learn is that the true essence of this quest lies not in the ping pong ball itself, the real ping pong ball in the friends we made along the way.",
+      "completionStatement": "Alan: Hello friend. Today, you have endured a treacherous journey, all in the name of finding a pingpong ball for a James Simmons. The lesson you have yet to learn is that the true essence of this quest lies not in the ping pong ball itself, the real ping pong ball is the friends we made along the way.",
       "exits": [
         {
           "isLocked": false,
