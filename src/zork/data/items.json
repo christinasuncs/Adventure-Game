@@ -128,7 +128,6 @@
             "weight": 2,
             "canEat": false,
             "isTask": true,
-            "isOpenable": false,
             "isOpenable": true
         },
         {

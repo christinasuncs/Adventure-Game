@@ -7,8 +7,8 @@ public class Room {
   private String roomName;
   private String description;
   private String dialogue;
-  private ArrayList<Exit> exits;
   private String completionStatement;
+  private ArrayList<Exit> exits;
   private ArrayList<Item> items;
 
   public ArrayList<Exit> getExits() {
@@ -129,8 +129,16 @@ public class Room {
     this.description = description;
   }
 
+  public void setDialogue(String dialogue) {
+    this.dialogue = dialogue;
+  }
+
   public String getDialogue(){
     return dialogue;
+  }
+
+  public void setCompletionStatement(String completionStatement){
+    this.completionStatement = completionStatement;
   }
 
   public String getCompletionStatement(){

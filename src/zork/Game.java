@@ -64,8 +64,12 @@ public class Game {
       String roomName = (String) ((JSONObject) roomObj).get("name");
       String roomId = (String) ((JSONObject) roomObj).get("id");
       String roomDescription = (String) ((JSONObject) roomObj).get("description");
+      String roomDialogue = (String) ((JSONObject) roomObj).get("dialogue");
+      String roomCompletionStatement = (String) ((JSONObject) roomObj).get("completionStatement");
       room.setDescription(roomDescription);
       room.setRoomName(roomName);
+      room.setDialogue(roomDialogue);
+      room.setCompletionStatement(roomCompletionStatement);
 
       JSONArray jsonExits = (JSONArray) ((JSONObject) roomObj).get("exits");
       ArrayList<Exit> exits = new ArrayList<Exit>();
@@ -259,6 +263,7 @@ public class Game {
     else if(currItem.isTask()){
       incrementPoints(10);
       currItem.setTask(false);
+      System.out.println(currentRoom.getCompletionStatement());
     }
   }
    
@@ -476,6 +481,7 @@ public class Game {
     else {
       currentRoom = nextRoom;
       System.out.println(currentRoom.longDescription());
+      System.out.println(currentRoom.getDialogue());
     }
 
   }
