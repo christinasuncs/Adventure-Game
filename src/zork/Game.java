@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-
+import java.util.Scanner;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -102,11 +102,12 @@ public class Game {
       String itemId = (String) ((JSONObject) itemObj).get("id");
       String itemDescription = (String) ((JSONObject) itemObj).get("description");
       String itemRoom = (String) ((JSONObject) itemObj).get("room");
+      String itemTaskRoom = (String) ((JSONObject) itemObj).get("taskRoom");
       int itemWeight = (int)((long)((JSONObject) itemObj).get("weight"));
       boolean itemCanEat = (boolean) ((JSONObject) itemObj).get("canEat");
       boolean itemIsTask = (boolean) ((JSONObject) itemObj).get("isTask");
       boolean itemIsOpenable = (boolean) ((JSONObject)itemObj).get("isOpenable");
-      item = new Item(itemWeight, itemName,itemIsOpenable, itemCanEat, itemIsTask, itemRoom, itemDescription);
+      item = new Item(itemWeight, itemName,itemIsOpenable, itemCanEat, itemIsTask, itemRoom, itemDescription, itemTaskRoom);
       itemsMap.add(item);
     }
   }
@@ -121,6 +122,9 @@ public class Game {
     while (!finished) {
       Command command;
       try {
+        if(points > 50){
+          endSequence();
+        }
         command = parser.getCommand();
         finished = processCommand(command);
       } catch (IOException e) {
@@ -129,6 +133,63 @@ public class Game {
 
     }
     System.out.println("Thank you for playing. Good bye.");
+  }
+
+  private void endSequence() {
+    if(points > 50){
+      currentRoom = roomMap.get("106");
+      currentRoom.longDescription();
+      System.out.println("Would you like to eat the cookie?");
+      Scanner scanner = new Scanner(System.in);
+      String answer = scanner.nextLine().toLowerCase();
+      if(answer.equals("yes")){
+        System.out.println("The cookie tastes funny. You see Krisha standing over you...");
+        System.out.println("your vision becomes hazy, until it all goes black.");
+        endGame();
+      }
+      else if(answer.equals("no")){
+        System.out.println("You instead decide to smell the cookie.");
+        System.out.println("The strong smell of rotten eggs burns your nose and eyes");
+        System.out.println("You see Krisha standing outside the door...she looks oddly dissapointed");
+        System.out.println();
+        System.out.println("Do you want to play again? (yes/no):"); 
+        String playAgain = scanner.nextLine();
+
+        if(playAgain.equalsIgnoreCase("yes")){
+          resetGame();
+          play();
+        }
+        else {
+          endGame();
+        }
+      }
+      scanner.close();
+      
+    }
+  }
+
+  private void resetGame() {
+    try {
+      initRooms("src\\zork\\data\\rooms.json");
+      initItems("src\\zork\\data\\items.json");
+
+      currentRoom = roomMap.get("106");
+
+      for(Item item: itemsMap){
+        String itemRoom = item.getRoom();
+        Room room = roomMap.get(itemRoom);
+        room.addItem(item);
+      }
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    parser = new Parser();
+  }
+
+  private void endGame() {
+    System.out.println("Thank you for playing AfterSchool at BVG!");
+    System.exit(0);
   }
 
   /**
@@ -142,7 +203,6 @@ public class Game {
     System.out.println("Type 'help' to see all your available actions");
     System.out.println();
     System.out.println(currentRoom.longDescription());
-    System.out.println(currentRoom.getDialogue());
   }
 
   /**
@@ -259,10 +319,16 @@ public class Game {
       System.out.println("You don't have this item to give.");
       return;
     } 
-    else if(currItem.isTask()){
-      incrementPoints(10);
-      currItem.setTask(false);
-      System.out.println(currentRoom.getCompletionStatement());
+    if(currItem.isTask()){
+      if(currItem.getTaskRoom().equalsIgnoreCase(currentRoom.getRoomName())){
+        System.out.println("You give the " + currItem.getName());
+        incrementPoints(10);
+        currItem.setTask(false);
+        System.out.println(currentRoom.getCompletionStatement());
+      }
+      else {
+        System.out.println("The" + currItem.getName() + "should be given in" + currItem.getTaskRoom() + ".");
+      }
     }
   }
    

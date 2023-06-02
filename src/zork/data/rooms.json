@@ -310,7 +310,7 @@
     {
       "id": "Library",
       "name": "Library",
-      "description": "You are in the Library.",
+      "description": "You are in the Library. There is a black book lying on the corner table.",
       "dialogue": " ",
       "completionStatement": " ",
       "exits": [
@@ -329,7 +329,7 @@
     {
       "id": "AlumniHall",
       "name": "AlumniHall",
-      "description": "You are in the Alumni Hall.",
+      "description": "You are in the Alumni Hall. A grey piece of fabric sits beside the potted plant.",
       "dialogue": " ",
       "completionStatement": " ",
       "exits": [
@@ -353,7 +353,7 @@
     {
       "id": "RestRoom2",
       "name": "RestRoom2",
-      "description": "You are in the Rest Room. Weirdo.",
+      "description": "You are in the Rest Room. Weirdo. There is a small white card in the sink.",
       "dialogue": " ",
       "completionStatement": " ",
       "exits": [
@@ -406,7 +406,7 @@
       "id": "BusinessRoom",
       "name": "BusinessRoom",
       "description": "You are in the Business Room.",
-      "dialogue": "Vanessa: Hey! Could you pass me that rag? I want to polish my DECA Glass.",
+      "dialogue": "Vanessa: Hey! Could you find me a rag? I want to polish my DECA Glass.",
       "completionStatement": "Thank you!!",
       "exits": [
         {

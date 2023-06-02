@@ -7,12 +7,14 @@ public class Item extends OpenableObject {
   private boolean canEat;
   private boolean isTask;
   private String room;
+  private String taskRoom; 
   private String description;
+  
 
   public Item(){
     //default 
   }
-  public Item(int weight, String name, boolean isOpenable, boolean canEat, boolean isTask, String room, String description) {
+  public Item(int weight, String name, boolean isOpenable, boolean canEat, boolean isTask, String room, String description, String taskRoom) {
     this.weight = weight;
     this.name = name;
     this.isOpenable = isOpenable;
@@ -20,6 +22,7 @@ public class Item extends OpenableObject {
     this.isTask = isTask;
     this.room = room;
     this.description = description;
+    this.taskRoom = taskRoom;
   }
 
   public void open() {
@@ -66,6 +69,10 @@ public class Item extends OpenableObject {
 
   public void setTask(boolean b){
     isTask = b;
+  }
+
+  public String getTaskRoom(){
+    return taskRoom;
   }
 
   public String getDescription(){
