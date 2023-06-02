@@ -136,7 +136,6 @@ public class Game {
   }
 
   private void endSequence() {
-    if(points > 50){
       currentRoom = roomMap.get("106");
       currentRoom.longDescription();
       System.out.println("Would you like to eat the cookie?");
@@ -162,7 +161,7 @@ public class Game {
         else {
           endGame();
         }
-      }
+        
       scanner.close();
       
     }
@@ -295,7 +294,7 @@ public class Game {
       System.out.println("You found " + item + "!");
       currentRoom.removeItem(currItem);
     } else {
-      System.out.println("There is no" + item + "in this room");
+      System.out.println("There is no " + item + " in this room");
     }
 
     
@@ -310,7 +309,7 @@ public class Game {
     Item currItem = null;
     validItems = inventory.getInventory();
 
-    for(Item i : validItems){
+    validItems.contains(currItem);for(Item i : validItems){
       if(i.getName().equals(item)){
         currItem = i;
       }
@@ -371,7 +370,7 @@ public class Game {
     if(currItem == null){
       System.out.println("You don't have this item in your backpack");
       return;
-    } else if(currItem != null && currItem.canEat()){
+    } else if(currItem.canEat()){
       ArrayList<String> responsesEat = new ArrayList<String>(Arrays.asList("That had a weird aftertaste... ", "That was tasty", "Your stomach growls...you must still be hungry"));
       int index = (int) (Math.random()*responsesEat.size());  //generate a random response from the list
       System.out.println(responsesEat.get(index));
@@ -420,8 +419,7 @@ public class Game {
     if(currItem == null){
       System.out.println("You do not have this item.");
       return;
-    }
-    if(currItem.canEat()){  //assume that if the item is a food, the player wants to eat it.
+    } else if(currItem.canEat()){  //assume that if the item is a food, the player wants to eat it.
       eat(command);
     } else if(currItem.getName().equals("key")){
       unlock(command);
@@ -559,7 +557,7 @@ public class Game {
 
 private void incrementPoints(int i) {
     points += i;
-    System.out.println("You completed a task and earned 10 points!");
+    System.out.println("You completed a task and earned " + i + " points!");
     System.out.println("Total points: " + points);
 }
 
