@@ -5,6 +5,7 @@
       "name": "106",
       "description": "You are in classroom 106, it is empty, you see a cookie on the desk.",
       "dialogue": " ",
+      "completionStatement": " ",
       "exits": [
         {
           "isLocked": true,
@@ -43,10 +44,10 @@
       "name": "ArtRoom",
       "description": "You are in the Art Room.",
       "dialogue": "Yolanda: Hi! Could you help me find the purple paint?",
-      "completionStatement": "Thank you so much!! I'll show you my painting when I'm done!",
+      "completionStatement": "Yolanda: Thank you so much!! I'll show you my painting when I'm done!",
       "exits": [
         {
-          "isLocked": true,
+          "isLocked": false,
           "direction": "West",
           "adjacentRoom": "G12CA"
         }
@@ -56,8 +57,8 @@
       "id": "ChemLab",
       "name": "ChemLab",
       "description": "You are in the Chem Lab.",
-      "dialogue": "Ms. Lee: AHH! I was experimenting with potassium and water and the chemical reaction got a bit out of hand...",
-      "completionStatement": "Thank you so much for extingusing the fire! Good luck with your Functions Exam",
+      "dialogue": "Ms. Lee: AHH FIRE! I was experimenting with potassium and water and the chemical reaction got a bit out of hand...",
+      "completionStatement": "Ms. Lee: Thank you so much for extinguishing the fire! Good luck with your Functions Exam",
       "exits": [
         {
           "isLocked": false,
@@ -95,7 +96,7 @@
       "name": "Gym",
       "description": "You are in the Gym.",
       "dialogue": "Ms. Deeks: Hey! I just finished coaching Sr Frisbee, could you lend me a hand and help put the nets up?",
-      "completionStatement": "Thanks so much for you help! Oh, I heard that there was a ping pong ball in the cafeteria, bit odd but maybe worth checking out",
+      "completionStatement": "Ms. Deeks: Thanks so much for you help! Oh, I heard that there was a ping pong ball in the cafeteria, bit odd but maybe worth checking out",
       "exits": [
         {
           "isLocked": false,
@@ -283,8 +284,8 @@
       "id": "Cafeteria",
       "name": "Cafeteria",
       "description": "You are in the Cafeteria.",
-      "dialogue": "Rohan: HI uh so I might've forgotten my lunch card at home... could I borrow yours?",
-      "completionStatement": "Thanks!! I'll pay you back next time!",
+      "dialogue": "Rohan: Hi uh so I might've forgotten my lunch card at home... could I borrow yours?",
+      "completionStatement": "Rohan: Thanks!! I'll pay you back next time!",
       "exits": [
         {
           "isLocked": false,
@@ -298,7 +299,7 @@
       "name": "FitnessRoom",
       "description": "You are in the Fitness Room.",
       "dialogue": "Thomas: Can you my dumbbell bench press? I'm trying to hit a new PR.",
-      "completionStatement": "Thanks.",
+      "completionStatement": "Thomas: Thanks a bunch.",
       "exits": [
         {
           "isLocked": false,
@@ -369,7 +370,7 @@
       "name": "MusicRoom",
       "description": "You are in the Music Room.",
       "dialogue": "Krrisha: Hey! I left my book in the library, could you grab it for me? Don't lose youself in the halls... :)",
-      "completionStatement": "Thank you so so much. Be careful out there..",
+      "completionStatement": "Krrisha: Thank you so so much. Be careful out there..",
       "exits": [
         {
           "isLocked": false,
@@ -407,7 +408,7 @@
       "name": "BusinessRoom",
       "description": "You are in the Business Room.",
       "dialogue": "Vanessa: Hey! Could you find me a rag? I want to polish my DECA Glass.",
-      "completionStatement": "Thank you!!",
+      "completionStatement": "Vanessa: Thank you!!",
       "exits": [
         {
           "isLocked": false,

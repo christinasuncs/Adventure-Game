@@ -47,9 +47,6 @@ public class Inventory {
         if(items.get(i).getName().equals(itemName)){
           items.remove(i);
           currentWeight -= currItem.getWeight();
-          if(!currItem.canEat()){
-            System.out.println("You dropped a " + itemName);
-          }
         }
       }
     }
@@ -62,7 +59,7 @@ public class Inventory {
       System.out.println("-->" + i.getName());
     }
     double ratio = (double)getCurrentWeight()/maxWeight;
-    double rounded = Math.round(ratio*100.0)/100.0;
+    double rounded = Math.round(ratio*100.0)/1.00;
     System.out.println("-->" + "Your backpack is " + rounded + "% full");
   }
 

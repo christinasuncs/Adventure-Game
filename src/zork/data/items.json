@@ -39,7 +39,7 @@
             "description": "This is a button used to lower and lift the basketball net.",
             "room": "Gym",
             "taskRoom": "Gym",
-            "weight": 1,
+            "weight": 5,
             "canEat": false,
             "isTask": true,
             "isOpenable": false
@@ -50,7 +50,7 @@
             "description": "This is a wrapper.",
             "room": "G11CA",
             "taskRoom": " ",
-            "weight": 1,
+            "weight": 3,
             "canEat": false,
             "isTask": false,
             "isOpenable": true
@@ -61,7 +61,7 @@
             "description": "This is a note, it may have a message.",
             "room": "Hallway4",
             "taskRoom": " ",
-            "weight": 1,
+            "weight": 2,
             "canEat": false,
             "isTask": false,
             "isOpenable": false
@@ -83,7 +83,7 @@
             "description": "This is a dumbbell, it weighs 100 lbs.",
             "room": "FitnessRoom",
             "taskRoom": "FitnessRoom",
-            "weight": 100,
+            "weight": 10,
             "canEat": false,
             "isTask": false,
             "isOpenable": false
@@ -127,7 +127,7 @@
             "description": "This is a DECA first place trophy from the International Career Development Conference.",
             "room": "BusinessRoom",
             "taskRoom": " ",
-            "weight": 3,
+            "weight": 25,
             "canEat": false,
             "isTask": false,
             "isOpenable": false
@@ -137,7 +137,7 @@
             "name": "paint",
             "description": "This is a tube of purple paint.",
             "room": "ArtRoom",
-            "taskRoom": " ",
+            "taskRoom": "ArtRoom",
             "weight": 2,
             "canEat": false,
             "isTask": true,
@@ -161,7 +161,7 @@
             "room": "StairwayF1",
             "taskRoom": " ",
             "weight": 1,
-            "canEat": false,
+            "canEat": true,
             "isTask": false,
             "isOpenable": false
         },

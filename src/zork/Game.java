@@ -25,7 +25,7 @@ public class Game {
 
   private Parser parser;
   private Room currentRoom;
-  private Inventory inventory = new Inventory(10);
+  private Inventory inventory = new Inventory(20);
   private ArrayList<Item> validItems = inventory.getInventory();
   public static ArrayList<Item> itemsMap = new ArrayList<Item>();
   private static int points = 0;
@@ -274,6 +274,7 @@ public class Game {
         }
       }
       inventory.removeItem(item);
+      System.out.println("You dropped a " + item);
     }
   }
 
@@ -323,6 +324,7 @@ public class Game {
         System.out.println("You give the " + currItem.getName());
         incrementPoints(10);
         currItem.setTask(false);
+        currentRoom.setIsTaskComplete(true);
         System.out.println(currentRoom.getCompletionStatement());
       }
       else {
@@ -346,6 +348,12 @@ public class Game {
       }
     }
       if (currItem == null){
+        for(Item i: inventory.getInventory()){
+          if(i.getName().equals(item)){
+            System.out.println("You already have this item in your backpack.");
+            return;
+          }
+        }
         System.out.println("This item is not available in the room");
       } else if(inventory.addItem(currItem)){
         currentRoom.removeItem(currItem);
@@ -377,6 +385,7 @@ public class Game {
         if("cookie".equals(currItem.getName())){  //if the item is the cookie, should give user key
           System.out.println("You bite into something hard, almost chipping your tooth.");
           System.out.println("Inside the cookie is a key!");
+          System.out.println("You put it in your backpack.");
           incrementPoints(5);
           currItem.setTask(false);  //cookie item is no longer a task
           Item key = new Item();
@@ -421,16 +430,20 @@ public class Game {
       return;
     } else if(currItem.canEat()){  //assume that if the item is a food, the player wants to eat it.
       eat(command);
+      inventory.removeItem(name);
     } else if(currItem.getName().equals("key")){
       unlock(command);
     } else if(currItem.isTask()){ //if it is a task increment points and display completion statement
       incrementPoints(5);
       currItem.setTask(false);
+      currentRoom.setIsTaskComplete(true);
       System.out.println(currentRoom.getCompletionStatement());
-    } else {//assume that by asking to "use" an item, the player wants to open it. 
+      inventory.removeItem(name);
+    } else if(currItem.isOpenable()){//assume that by asking to "use" an item, the player wants to open it. 
       open(command);
+    } else {
+      System.out.println("You cannot use " + currItem.getName() + " to do anything.");
     }
-    inventory.removeItem(name);
   }
 
   private void unlock(Command command) {
@@ -492,8 +505,7 @@ public class Game {
       }
 
 
-    }
-    //get rooms current items    
+    } 
   }
 
   /**
@@ -540,7 +552,9 @@ public class Game {
     else {
       currentRoom = nextRoom;
       System.out.println(currentRoom.longDescription());
+      if(currentRoom.isTaskComplete() == false){
       System.out.println(currentRoom.getDialogue());
+      }
     }
 
   }
@@ -549,8 +563,11 @@ public class Game {
     System.out.println(currentRoom.longDescription());
     ArrayList<Item> roomItems = currentRoom.getItems();
     System.out.println("You scan the room and see: ");
+    if(roomItems.size() == 0){
+      System.out.println("The room is empty. Nothing of value in here...");
+    }
     for(Item item: roomItems){
-      System.out.println("-->" + item);
+      System.out.println("-->" + item.getName());
     }
   }
 
@@ -561,57 +578,57 @@ private void incrementPoints(int i) {
     System.out.println("Total points: " + points);
 }
 
-  private Clip musicClip;
+//   private Clip musicClip;
 
-  public void playMusic(String filePath) {
-    try {
-      File musicFile = new File(filePath);
-      AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
+//   public void playMusic(String filePath) {
+//     try {
+//       File musicFile = new File(filePath);
+//       AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
 
-      AudioFormat format = audioStream.getFormat();
-      DataLine.Info info = new DataLine.Info(Clip.class, format);
-      musicClip = (Clip) AudioSystem.getLine(info);
+//       AudioFormat format = audioStream.getFormat();
+//       DataLine.Info info = new DataLine.Info(Clip.class, format);
+//       musicClip = (Clip) AudioSystem.getLine(info);
 
-      musicClip.open(audioStream);
-      musicClip.start();
-  } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-      e.printStackTrace();
-  }
-}
+//       musicClip.open(audioStream);
+//       musicClip.start();
+//   } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+//       e.printStackTrace();
+//   }
+// }
 
-public void stopMusic() {
-  if (musicClip != null && musicClip.isRunning()) {
-      musicClip.stop();
-      musicClip.close();
-  }
-}
+// public void stopMusic() {
+//   if (musicClip != null && musicClip.isRunning()) {
+//       musicClip.stop();
+//       musicClip.close();
+//   }
+// }
 
-public static void downloadMusic(String musicUrl, String savePath) {
-  try {
-      URL url = new URL(musicUrl);
-      InputStream in = new BufferedInputStream(url.openStream());
-      FileOutputStream fos = new FileOutputStream(savePath);
+// public static void downloadMusic(String musicUrl, String savePath) {
+//   try {
+//       URL url = new URL(musicUrl);
+//       InputStream in = new BufferedInputStream(url.openStream());
+//       FileOutputStream fos = new FileOutputStream(savePath);
 
-      byte[] buffer = new byte[1024];
-      int bytesRead;
-      while ((bytesRead = in.read(buffer, 0, buffer.length)) != -1) {
-          fos.write(buffer, 0, bytesRead);
-      }
+//       byte[] buffer = new byte[1024];
+//       int bytesRead;
+//       while ((bytesRead = in.read(buffer, 0, buffer.length)) != -1) {
+//           fos.write(buffer, 0, bytesRead);
+//       }
 
-      fos.close();
-      in.close();
-  } catch (IOException e) {
-      e.printStackTrace();
-  }
-}
+//       fos.close();
+//       in.close();
+//   } catch (IOException e) {
+//       e.printStackTrace();
+//   }
+// }
 
-public static void main(String[] args) {
-  String musicUrl = "https://www.youtube.com/watch?v=E-6zrzmAh2s";
-  String savePath = "path/to/save/music/sample.mp3";
-  downloadMusic(musicUrl, savePath);
+// public static void main(String[] args) {
+//   String musicUrl = "https://www.youtube.com/watch?v=E-6zrzmAh2s";
+//   String savePath = "path/to/save/music/sample.mp3";
+//   downloadMusic(musicUrl, savePath);
 
-  // Play the downloaded music
-  Game game = new Game();
-  game.playMusic(savePath);
-}
+//   // Play the downloaded music
+//   Game game = new Game();
+//   game.playMusic(savePath);
+// }
 }
