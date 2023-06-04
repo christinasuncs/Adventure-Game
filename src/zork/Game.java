@@ -30,6 +30,7 @@ public class Game {
   public static ArrayList<Item> itemsMap = new ArrayList<Item>();
   private ArrayList<Room> tasks = new ArrayList<Room>();
   private static int points = 0;
+
   /**
    * Create the game and initialise its internal map.
    */
@@ -39,7 +40,7 @@ public class Game {
       initItems("src\\zork\\data\\items.json");
 
       currentRoom = roomMap.get("106");
-
+      new TimerPrint();
       for(Item item: itemsMap){
         String itemRoom = item.getRoom();
         Room room = roomMap.get(itemRoom);
@@ -519,18 +520,21 @@ public class Game {
         Item wrapper = currItem;
         itemsMap.set(n, wrapper);
       }
+
+      else if(currItem.getName().equals("paint")){
+        System.out.println("You open the paint and it squirts all over you! Now you're sticky and look like a knock-off Megamind.");
+        currItem.setOpenable(false);
+        Item paint = currItem;
+        itemsMap.set(n, paint);
+      }
       else if(currItem.getName().equals("book")){
         System.out.println("You open the book and find a diagram of reeds being crushed by rocks.");
         currItem.setOpenable(false);
         Item book = currItem;
         itemsMap.set(n, book);
       }
-      else if(currItem.getName().equals("paint")){
-        System.out.println("The purple paint gets all over your white shirt.");
-        currItem.setOpenable(false);
-        Item paint = currItem;
-        itemsMap.set(n,paint);
-      }
+
+
     } 
   }
 

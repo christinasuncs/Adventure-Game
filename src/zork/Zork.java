@@ -6,5 +6,6 @@ public class Zork {
     Game game = new Game();
     game.play();
     // game.playMusic("path/to/music/file.wav");
+    TimerPrint timerPrint = new TimerPrint();
   }
 }
