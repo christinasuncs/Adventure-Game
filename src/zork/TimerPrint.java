@@ -14,6 +14,6 @@ public class TimerPrint{
             }
         };
 
-        timer.schedule(task, 0, 5000);
+        timer.schedule(task, 0, 180000);
     }
 }

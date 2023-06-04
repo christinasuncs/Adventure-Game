@@ -516,6 +516,13 @@ public class Game {
         itemsMap.set(n, wrapper);
       }
 
+      else if(currItem.getName().equals("paint")){
+        System.out.println("You open the paint and it squirts all over you! Now you're sticky and look like a knock-off Megamind.");
+        currItem.setOpenable(false);
+        Item paint = currItem;
+        itemsMap.set(n, paint);
+      }
+
       else {
         System.out.println("You open the book and find a diagram of reeds being crushed by rocks.");
         currItem.setOpenable(false);
@@ -626,50 +633,6 @@ private void incrementPoints(int i) {
 //       DataLine.Info info = new DataLine.Info(Clip.class, format);
 //       musicClip = (Clip) AudioSystem.getLine(info);
 
-<<<<<<< HEAD
-      musicClip.open(audioStream);
-      musicClip.start();
-  } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-      e.printStackTrace();
-  }
-}
-
-public void stopMusic() {
-  if (musicClip != null && musicClip.isRunning()) {
-      musicClip.stop();
-      musicClip.close();
-  }
-}
-
-public static void downloadMusic(String musicUrl, String savePath) {
-  try {
-      URL url = new URL(musicUrl);
-      InputStream in = new BufferedInputStream(url.openStream());
-      FileOutputStream fos = new FileOutputStream(savePath);
-
-      byte[] buffer = new byte[1024];
-      int bytesRead;
-      while ((bytesRead = in.read(buffer, 0, buffer.length)) != -1) {
-          fos.write(buffer, 0, bytesRead);
-      }
-
-      fos.close();
-      in.close();
-  } catch (IOException e) {
-      e.printStackTrace();
-  }
-}
-
-public static void main(String[] args) {
-  String musicUrl = "https://www.youtube.com/watch?v=E-6zrzmAh2s";
-  String savePath = "path/to/save/music/sample.mp3";
-  downloadMusic(musicUrl, savePath);
-
-  // Play the downloaded music
-  Game game = new Game();
-  game.playMusic(savePath);
-  }
-=======
 //       musicClip.open(audioStream);
 //       musicClip.start();
 //   } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
@@ -712,5 +675,4 @@ public static void main(String[] args) {
 //   Game game = new Game();
 //   game.playMusic(savePath);
 // }
->>>>>>> 76a28ae8d8c7621584a664d1040d7148479897bc
 }
