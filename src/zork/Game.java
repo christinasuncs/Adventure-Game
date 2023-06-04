@@ -124,7 +124,7 @@ public class Game {
     while (!finished) {
       Command command;
       try {
-        if(points > 80){
+        if(points > 55){
           endSequence();
         }
         command = parser.getCommand();
@@ -350,7 +350,7 @@ public class Game {
         inventory.removeItem(currItem.getName());
       }
       else {
-        System.out.println("The" + currItem.getName() + "should be given in" + currItem.getTaskRoom() + ".");
+        System.out.println("The " + currItem.getName() + " should be given in " + currItem.getTaskRoom() + ".");
       }
     }
   }
@@ -380,6 +380,7 @@ public class Game {
       } else if(inventory.addItem(currItem)){
         currentRoom.removeItem(currItem);
         System.out.println("You have taken the " + currItem.getName());
+        System.out.println("-->" + currItem.getName() + ": " + currItem.getDescription());
       }
   }
 
@@ -455,6 +456,8 @@ public class Game {
       inventory.removeItem(name);
     } else if(currItem.getName().equals("key")){
       unlock(command);
+    } else if(currItem.isTask()){
+      give(command);
     } else if(currItem.isTask()){ //if it is a task increment points and display completion statement
       incrementPoints(5);
       currItem.setTask(false);
@@ -497,6 +500,9 @@ public class Game {
         currItem = curr;
         n = i;
       }
+    }
+    if(currItem == null){
+      return;
     }
 
     boolean isopen = currItem.isOpenable();
@@ -604,10 +610,11 @@ public class Game {
   }
 
   private void look(Command command){
-    System.out.println("You're looking around the room.");
-    System.out.println(currentRoom.longDescription());
+    System.out.println(" ");
+    System.out.println("You're looking around Room: " + currentRoom.getRoomName());
+    System.out.println(currentRoom.shortDescription());
     ArrayList<Item> roomItems = currentRoom.getItems();
-    System.out.println("You scan the room and see: ");
+    System.out.println("After a full 360 scan you find: ");
     if(roomItems.size() == 0){
       System.out.println("The room is empty. Nothing of value in here...");
     }

@@ -85,7 +85,7 @@
             "taskRoom": "FitnessRoom",
             "weight": 10,
             "canEat": false,
-            "isTask": false,
+            "isTask": true,
             "isOpenable": false
         },
         {
