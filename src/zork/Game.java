@@ -515,7 +515,7 @@ public class Game {
       }
 
       else if(currItem.getName().equals("wrapper")){
-        System.out.println("You open the wrapper and finds some moldy, 1-year-old mentos that are as hard as rock.");
+        System.out.println("You open the wrapper and find some moldy, 1-year-old mentos that are as hard as rock.");
         currItem.setOpenable(false);
         Item wrapper = currItem;
         itemsMap.set(n, wrapper);
