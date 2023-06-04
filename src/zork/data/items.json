@@ -160,6 +160,76 @@
             "canEat": false,
             "isTask": false,
             "isOpenable": false
+        },
+        {
+            "id": "couch",
+            "name": "couch",
+            "description": "This is a couch.",
+            "room": "G11CA",
+            "weight": 500,
+            "canEat": false,
+            "isTask": false,
+            "isOpenable": false
+        },
+        {
+            "id": "medball",
+            "name": "medball",
+            "description": "This is a medicine ball.",
+            "room": "Gym",
+            "weight": 20,
+            "canEat": false,
+            "isTask": false,
+            "isOpenable": false
+        },
+        {
+            "id": "table",
+            "name": "table",
+            "description": "This is a table.",
+            "room": "Cafeteria",
+            "weight": 200,
+            "canEat": false,
+            "isTask": false,
+            "isOpenable": false
+        },
+        {
+            "id": "plant",
+            "name": "plant",
+            "description": "This is a potted plant.",
+            "room": "AlumniHall",
+            "weight": 50,
+            "canEat": false,
+            "isTask": false,
+            "isOpenable": false
+        },
+        {
+            "id": "desk",
+            "name": "desk",
+            "description": "This is a desk.",
+            "room": "BusinessRoom",
+            "weight": 50,
+            "canEat": false,
+            "isTask": false,
+            "isOpenable": false
+        },
+        {
+            "id": "chair",
+            "name": "chair",
+            "description": "This is a chair.",
+            "room": "MusicRoom",
+            "weight": 30,
+            "canEat": false,
+            "isTask": false,
+            "isOpenable": false
+        },
+        {
+            "id": "microphone",
+            "name": "microphone",
+            "description": "This is a microphone.",
+            "room": "Theatre",
+            "weight": 5,
+            "canEat": false,
+            "isTask": false,
+            "isOpenable": false
         }
     ]
 }
