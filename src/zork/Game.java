@@ -534,7 +534,6 @@ public class Game {
         itemsMap.set(n, book);
       }
 
-
     } 
   }
 
