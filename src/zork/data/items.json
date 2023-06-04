@@ -58,7 +58,7 @@
         {
             "id": "note",
             "name": "note",
-            "description": "This is a note, it may have a message.",
+            "description": "This is a note, its a piece of a recipe for chocolate chip cookies with a 'K' in the corner",
             "room": "Hallway4",
             "taskRoom": " ",
             "weight": 2,
