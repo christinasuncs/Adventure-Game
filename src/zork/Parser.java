@@ -35,7 +35,7 @@ public class Parser {
     }
 
     String word1 = words.get(0);
-    String word2 = null;
+    String word2 = "";
 
     //find the command and set it to the first word
     for(int i = 0; i < words.size(); i++){
@@ -47,12 +47,19 @@ public class Parser {
 
     //find the noun and set it to the second word
     if (words.size() > 1) {
-      word2 = null; //assume no second word
+      word2 = ""; //assume no second word
 
       int index = checkNoun(words); //check if valid noun inputed
 
       if(index > 0) {
         word2 = words.get(index);
+      }
+      else {
+        words.remove(word1);
+        for(String str: words){
+          word2 += str + " ";
+        }
+        word2 = word2.substring(0, word2.length() - 1);
       }
     }
 
@@ -66,8 +73,8 @@ public class Parser {
 
   //check to see if the user inputted a valid noun and return its index
   private int checkNoun(ArrayList<String> list) {
-    ArrayList<String> items = new ArrayList<String>(Arrays.asList("cookie", "key", "extinguisher", "button", "wrapper", "note", "chips", "dumbbell", "book", "rag", "card", "trophy"));
-    ArrayList<String> direction = new ArrayList<String>(Arrays.asList("north", "south", "east", "west"));
+    ArrayList<String> items = new ArrayList<String>(Arrays.asList("cookie", "key", "extinguisher", "button", "wrapper", "note", "chips", "dumbbell", "book", "rag", "card", "trophy", "bear", "paint", "skull", "gum"));
+    ArrayList<String> direction = new ArrayList<String>(Arrays.asList("north", "south", "east", "west", "up", "down"));
     for(int i = 0; i < list.size(); i++){
       if(items.contains(list.get(i)) || direction.contains(list.get(i)))
         return i;
