@@ -137,6 +137,8 @@ public class Game {
   }
 
   private void endSequence() {
+      Room room = roomMap.get("G12CA");
+      System.out.println(room.getCompletionStatement());
       currentRoom = roomMap.get("106");
       System.out.println("------------------------------------");
       System.out.println(currentRoom.longDescription());
@@ -248,11 +250,13 @@ public class Game {
     } else if(commandWord.equals("drop")){
       drop(command);
     } else if(commandWord.equals("take")){
-        take(command);
+      take(command);
     } else if(commandWord.equals("give")){
-        give(command);
+      give(command);
     } else if(commandWord.equals("find")){
-        find(command);
+      find(command);
+    } else if(commandWord.equals("open")){
+      open(command);
     } else if (commandWord.equals("sing")){
       System.out.println("lalalalala");
     } else if (commandWord.equals("scream")){
@@ -261,11 +265,11 @@ public class Game {
       System.out.println("Crying won't help you =)");
     }else if (commandWord.equals("look")){
       look(command);
-    }else if (commandWord.equals("fight")){
+    } else if (commandWord.equals("fight")){
       System.out.println("You're not a good fighter Christina =)");
-    }else if(commandWord.equals("throw")){
+    } else if(commandWord.equals("throw")){
       System.out.println("Remember you aren't good at throwing");
-    }else if(commandWord.equals("task")){
+    } else if(commandWord.equals("task")){
       displayTasks();
     }
       return false;
@@ -460,7 +464,7 @@ public class Game {
     } else if(currItem.isOpenable()){//assume that by asking to "use" an item, the player wants to open it. 
       open(command);
     } else {
-      System.out.println("You cannot use " + currItem.getName() + " to do anything.");
+      System.out.println("You cannot use this to do anything.");
     }
   }
 
@@ -497,7 +501,8 @@ public class Game {
     boolean isopen = currItem.isOpenable();
 
     if(isopen == false){
-      System.out.println("This object is not openable.");
+      System.out.println("You can't open the " + currItem.getName());
+      return;
     }
 
     else{
@@ -514,15 +519,18 @@ public class Game {
         Item wrapper = currItem;
         itemsMap.set(n, wrapper);
       }
-
-      else {
+      else if(currItem.getName().equals("book")){
         System.out.println("You open the book and find a diagram of reeds being crushed by rocks.");
         currItem.setOpenable(false);
         Item book = currItem;
         itemsMap.set(n, book);
       }
-
-
+      else if(currItem.getName().equals("paint")){
+        System.out.println("The purple paint gets all over your white shirt.");
+        currItem.setOpenable(false);
+        Item paint = currItem;
+        itemsMap.set(n,paint);
+      }
     } 
   }
 
