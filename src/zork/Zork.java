@@ -5,6 +5,6 @@ public class Zork {
   public static void main(String[] args) {
     Game game = new Game();
     game.play();
-    game.playMusic("path/to/music/file.wav");
+    // game.playMusic("path/to/music/file.wav");
   }
 }

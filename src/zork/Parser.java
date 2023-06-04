@@ -54,6 +54,11 @@ public class Parser {
       if(index > 0) {
         word2 = words.get(index);
       }
+      else {
+        for(String str: words){
+          word2 += str;
+        }
+      }
     }
 
       if (words.size() == 0){
@@ -66,8 +71,8 @@ public class Parser {
 
   //check to see if the user inputted a valid noun and return its index
   private int checkNoun(ArrayList<String> list) {
-    ArrayList<String> items = new ArrayList<String>(Arrays.asList("cookie", "key", "extinguisher", "button", "wrapper", "note", "chips", "dumbbell", "book", "rag", "card", "trophy"));
-    ArrayList<String> direction = new ArrayList<String>(Arrays.asList("north", "south", "east", "west"));
+    ArrayList<String> items = new ArrayList<String>(Arrays.asList("cookie", "key", "extinguisher", "button", "wrapper", "note", "chips", "dumbbell", "book", "rag", "card", "trophy", "bear", "paint", "skull", "gum"));
+    ArrayList<String> direction = new ArrayList<String>(Arrays.asList("north", "south", "east", "west", "up", "down"));
     for(int i = 0; i < list.size(); i++){
       if(items.contains(list.get(i)) || direction.contains(list.get(i)))
         return i;

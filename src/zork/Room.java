@@ -7,8 +7,9 @@ public class Room {
   private String roomName;
   private String description;
   private String dialogue;
-  private ArrayList<Exit> exits;
   private String completionStatement;
+  private boolean isTaskComplete;
+  private ArrayList<Exit> exits;
   private ArrayList<Item> items;
 
   public ArrayList<Exit> getExits() {
@@ -25,6 +26,7 @@ public class Room {
    */
   public Room(String description) {
     this.description = description;
+    isTaskComplete = false;
     exits = new ArrayList<Exit>();
     items = new ArrayList<Item>();
   }
@@ -34,6 +36,7 @@ public class Room {
     description = "DEFAULT DESCRIPTION";
     exits = new ArrayList<Exit>();
     items = new ArrayList<Item>();
+    isTaskComplete = false;
   }
 
   public void addExit(Exit exit) throws Exception {
@@ -89,8 +92,6 @@ public class Room {
       System.out.println(direction + " is not a valid direction.");
       return null;
     }
-
-    System.out.println(direction + " is not a valid direction.");
     return null;
   }
 
@@ -129,11 +130,27 @@ public class Room {
     this.description = description;
   }
 
+  public void setDialogue(String dialogue) {
+    this.dialogue = dialogue;
+  }
+
   public String getDialogue(){
     return dialogue;
   }
 
+  public void setCompletionStatement(String completionStatement){
+    this.completionStatement = completionStatement;
+  }
+
   public String getCompletionStatement(){
     return completionStatement;
+  }
+
+  public void setIsTaskComplete(boolean bool){
+    isTaskComplete = bool;
+  }
+
+  public boolean isTaskComplete() {
+    return isTaskComplete;
   }
 }
