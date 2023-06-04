@@ -10,7 +10,7 @@ public class TimerPrint{
             @Override
 
             public void run() {
-                System.out.println("   ");
+                System.out.println(" ");
                 System.out.println("RINGGGGGGGGGGGGGG!!!!!");
                 System.out.println(" ");
             }
