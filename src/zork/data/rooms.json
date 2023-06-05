@@ -95,7 +95,7 @@
       "id": "Gym",
       "name": "Gym",
       "description": "You are in the Gym.",
-      "dialogue": "Ms. Deeks: Hey! I just finished coaching Sr Frisbee, could you lend me a hand and help put the nets up?",
+      "dialogue": "Ms. Deeks: Hey! I just finished coaching Sr Frisbee, could you lend me a hand and help put the nets up? I can't seem to find the button.",
       "completionStatement": "Ms. Deeks: Thanks so much for you help! Oh, I heard that there was a ping pong ball in the cafeteria, bit odd but maybe worth checking out",
       "exits": [
         {
@@ -206,6 +206,11 @@
           "isLocked": false,
           "direction": "North",
           "adjacentRoom": "RestRoom1"
+        },
+        {
+          "isLocked": false,
+          "direction": "East",
+          "adjacentRoom": "Hallway2"
         }
       ]
     },
@@ -225,7 +230,7 @@
     },
     {
       "id": "Theatre",
-      "name": "Theare",
+      "name": "Theatre",
       "description": "You are in the Theatre.",
       "dialogue": " ",
       "completionStatement": " ",
@@ -311,7 +316,7 @@
     {
       "id": "Library",
       "name": "Library",
-      "description": "You are in the Library. There is a black book lying on the corner table.",
+      "description": "You are in the Library.",
       "dialogue": " ",
       "completionStatement": " ",
       "exits": [
@@ -330,7 +335,7 @@
     {
       "id": "AlumniHall",
       "name": "AlumniHall",
-      "description": "You are in the Alumni Hall. A grey piece of fabric sits beside the potted plant.",
+      "description": "You are in the Alumni Hall.",
       "dialogue": " ",
       "completionStatement": " ",
       "exits": [
@@ -354,7 +359,7 @@
     {
       "id": "RestRoom2",
       "name": "RestRoom2",
-      "description": "You are in the Rest Room. Weirdo. There is a small white card in the sink.",
+      "description": "You are in the Rest Room. Weirdo.",
       "dialogue": " ",
       "completionStatement": " ",
       "exits": [

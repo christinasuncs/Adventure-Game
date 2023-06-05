@@ -35,7 +35,7 @@ public class Parser {
     }
 
     String word1 = words.get(0);
-    String word2 = null;
+    String word2 = "";
 
     //find the command and set it to the first word
     for(int i = 0; i < words.size(); i++){
@@ -47,7 +47,7 @@ public class Parser {
 
     //find the noun and set it to the second word
     if (words.size() > 1) {
-      word2 = null; //assume no second word
+      word2 = ""; //assume no second word
 
       int index = checkNoun(words); //check if valid noun inputed
 
@@ -55,10 +55,17 @@ public class Parser {
         word2 = words.get(index);
       }
       else {
+        words.remove(word1);
         for(String str: words){
-          word2 += str;
+          word2 += str + " ";
         }
+        word2 = word2.substring(0, word2.length() - 1);
       }
+    }
+    
+    //set word2 to null if it is empty
+    if(word2.equals("")){
+      word2 = null;
     }
 
       if (words.size() == 0){
