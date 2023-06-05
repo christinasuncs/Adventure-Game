@@ -176,31 +176,6 @@ public class Game {
   }
 
   //If player wants to play again, reintialize all the variables, rooms, and items
-  private void resetGame() {
-    try {
-      initRooms("src\\zork\\data\\rooms.json");
-      initItems("src\\zork\\data\\items.json");
-
-      //reset variables
-      currentRoom = roomMap.get("106");
-      points = 0;
-      tasks = new ArrayList<Room>();
-      inventory = new Inventory(20);
-
-      for(Item item: itemsMap){
-        String itemRoom = item.getRoom();
-        Room room = roomMap.get(itemRoom);
-        room.addItem(item);
-      }
-      else {
-        endGame();
-      }
-      
-    scanner.close();
-    
-  }
-}
-
 private void resetGame() {
   try {
     initRooms("src\\zork\\data\\rooms.json");
