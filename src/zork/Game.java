@@ -124,7 +124,7 @@ public class Game {
     while (!finished) {
       Command command;
       try {
-        if(points > 55){
+        if(points > 75){
           endSequence();
         }
         command = parser.getCommand();
@@ -139,25 +139,28 @@ public class Game {
 
   private void endSequence() {
       Room room = roomMap.get("G12CA");
-      System.out.println(room.getCompletionStatement());
       currentRoom = roomMap.get("106");
+      System.out.println("------------------------------------");
+      System.out.println("You see Alan walking towards you from across the hall.");
+      System.out.println(room.getCompletionStatement());
       System.out.println("------------------------------------");
       System.out.println(currentRoom.longDescription());
       System.out.println("Would you like to eat the cookie? (yes/no)");
       Scanner scanner = new Scanner(System.in);
       String answer = scanner.nextLine().toLowerCase();
       if(answer.equalsIgnoreCase("yes")){
-        System.out.println("The cookie tastes funny. You see Krrisha standing over you smiling");
+        System.out.println("The cookie tastes funny. You see Krrisha standing over you smiling.");
         System.out.println("...your vision becomes hazy, until it all goes black.");
         endGame();
       }
       else if(answer.equalsIgnoreCase("no")){
         System.out.println("You instead decide to smell the cookie.");
-        System.out.println("The strong smell of rotten eggs burns your nose and eyes");
-        System.out.println("You see Krrisha standing outside the door...she looks oddly dissapointed");
+        System.out.println("The strong smell of rotten eggs burns your nose and eyes.");
+        System.out.println("You see Krrisha standing outside the door...she looks oddly dissapointed.");
         System.out.println("You have won!");
         System.out.println();
         System.out.println("Do you want to play again? (yes/no):"); 
+        System.out.print(">");
         String playAgain = scanner.nextLine();
 
         if(playAgain.equalsIgnoreCase("yes")){
@@ -198,8 +201,8 @@ public class Game {
   private void endGame() {
     System.out.println("-------------------------------------------");
     System.out.println("Thank you for playing AfterSchool at BVG!");
-    System.out.println("We hope you enjoyed the game.");
-    System.out.println("and learned to never eat suspicious cookies");
+    System.out.println("We hope you enjoyed the game!");
+    System.out.println("And learned to never eat suspicious cookies...");
     System.out.println("--------------------------------------------");
     System.exit(0);
   }

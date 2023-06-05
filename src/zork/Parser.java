@@ -62,6 +62,11 @@ public class Parser {
         word2 = word2.substring(0, word2.length() - 1);
       }
     }
+    
+    //set word2 to null if it is empty
+    if(word2.equals("")){
+      word2 = null;
+    }
 
       if (words.size() == 0){
         return new Command(null, null);
