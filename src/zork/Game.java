@@ -147,14 +147,14 @@ public class Game {
       Scanner scanner = new Scanner(System.in);
       String answer = scanner.nextLine().toLowerCase();
       if(answer.equalsIgnoreCase("yes")){
-        System.out.println("The cookie tastes funny. You see Krisha standing over you smiling");
+        System.out.println("The cookie tastes funny. You see Krrisha standing over you smiling");
         System.out.println("...your vision becomes hazy, until it all goes black.");
         endGame();
       }
       else if(answer.equalsIgnoreCase("no")){
         System.out.println("You instead decide to smell the cookie.");
         System.out.println("The strong smell of rotten eggs burns your nose and eyes");
-        System.out.println("You see Krisha standing outside the door...she looks oddly dissapointed");
+        System.out.println("You see Krrisha standing outside the door...she looks oddly dissapointed");
         System.out.println("You have won!");
         System.out.println();
         System.out.println("Do you want to play again? (yes/no):"); 
