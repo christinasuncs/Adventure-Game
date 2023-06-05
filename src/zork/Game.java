@@ -192,36 +192,15 @@ public class Game {
         Room room = roomMap.get(itemRoom);
         room.addItem(item);
       }
-      else {
         endGame();
-      }
+    
       
+    Scanner scanner;
     scanner.close();
     
-  }
-}
-
-private void resetGame() {
-  try {
-    initRooms("src\\zork\\data\\rooms.json");
-    initItems("src\\zork\\data\\items.json");
-
-    currentRoom = roomMap.get("106");
-    points = 0;
-    tasks = new ArrayList<Room>();
-    inventory = new Inventory(20);
-
-    for(Item item: itemsMap){
-      String itemRoom = item.getRoom();
-      Room room = roomMap.get(itemRoom);
-      room.addItem(item);
     }
-
-  } catch (Exception e) {
-    e.printStackTrace();
-  }
-  parser = new Parser();
 }
+
 
 private void endGame() {
   System.out.println("-------------------------------------------");
