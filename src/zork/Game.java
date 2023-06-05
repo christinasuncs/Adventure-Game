@@ -482,27 +482,27 @@ private void resetGame() {
 
 
   private void open(Command command) { 
-    if(!command.hasSecondWord()){ //need an item to open
+    if(!command.hasSecondWord()){ //checks if there is an object to open
       System.out.println("What do you want to open?");
       return;
     }
-    String name = command.getSecondWord();
+    String name = command.getSecondWord(); //stores the item that the player wants
     Item currItem = null;
-    int n = 0;
+    int n = 0; //keeps track of the index of the item in the ArrayList
 
-    for (int i = 0; i < itemsMap.size(); i++) {
+    for (int i = 0; i < itemsMap.size(); i++) { //goes through the ArrayList to check for the item
       Item curr = itemsMap.get(i);      
 
-      if(curr.getName().equals(name)){
+      if(curr.getName().equals(name)){ //checks if the item is equal to the item the player wants
         currItem = curr;
-        n = i;
+        n = i; //assigns the index of the item in the ArrayList
       }
     }
-    if(currItem == null){
+    if(currItem == null){ //returns nothing if the item is not found
       return;
     }
 
-    boolean isopen = currItem.isOpenable();
+    boolean isopen = currItem.isOpenable(); //boolean variable that checks if the object is open
 
     if(isopen == false){ // the item cannot be opened, tell the player
       System.out.println("You can't open the " + currItem.getName());
@@ -514,27 +514,27 @@ private void resetGame() {
         System.out.println("You open the bag of chips and find some delicous sunchips to munch on.");
         currItem.setOpenable(false); // the item is no longer openeable 
         Item chips = currItem;
-        itemsMap.set(n, chips);
+        itemsMap.set(n, chips); //sets the item in the array list with the new attributes
       }
 
       else if(currItem.getName().equals("wrapper")){
         System.out.println("You open the wrapper and find some moldy, 1-year-old mentos that are as hard as rock.");
         currItem.setOpenable(false); // the item is no longer openable 
         Item wrapper = currItem;
-        itemsMap.set(n, wrapper);
+        itemsMap.set(n, wrapper); //sets the item in the array list with the new attributes
       }
 
       else if(currItem.getName().equals("paint")){
         System.out.println("You open the paint and it squirts all over you! Now you're sticky and look like a knock-off Megamind.");
         currItem.setOpenable(false); // the item is no longer openable 
         Item paint = currItem;
-        itemsMap.set(n, paint);
+        itemsMap.set(n, paint); //sets the item in the array list with the new attributes
       }
       else if(currItem.getName().equals("book")){
         System.out.println("You open the book and find a diagram of reeds being crushed by rocks.");
         currItem.setOpenable(false); // the item is no longer openable 
         Item book = currItem;
-        itemsMap.set(n, book);
+        itemsMap.set(n, book); //sets the item in the array list with the new attributes
       }
 
     } 
