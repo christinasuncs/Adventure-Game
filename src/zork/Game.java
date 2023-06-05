@@ -31,17 +31,14 @@ public class Game {
   private ArrayList<Room> tasks = new ArrayList<Room>();
   private static int points = 0;
 
-  /**
-   * Create the game and initialise its internal map.
-   */
   public Game() {
     try {
       initRooms("src\\zork\\data\\rooms.json");
       initItems("src\\zork\\data\\items.json");
 
-      currentRoom = roomMap.get("106");
+      currentRoom = roomMap.get("106"); //player starts in room 106
       new TimerPrint();
-      for(Item item: itemsMap){
+      for(Item item: itemsMap){ //place all of the items in the correct starting room
         String itemRoom = item.getRoom();
         Room room = roomMap.get(itemRoom);
         room.addItem(item);
@@ -52,7 +49,8 @@ public class Game {
     }
     parser = new Parser();
   }
-
+  
+  //Initialize all of the rooms
   private void initRooms(String fileName) throws Exception {
     Path path = Path.of(fileName);
     String jsonString = Files.readString(path);
@@ -89,7 +87,7 @@ public class Game {
     }
   }
 
-  //We need to initialize the items here once we create the items.json
+  //Initialize all of the items
   private void initItems(String fileName) throws Exception {
     Path path = Path.of(fileName);
     String jsonString = Files.readString(path);
@@ -124,7 +122,7 @@ public class Game {
     while (!finished) {
       Command command;
       try {
-        if(points > 75){
+        if(points > 75){  //max amount of points to earn is 80
           endSequence();
         }
         command = parser.getCommand();
@@ -134,32 +132,32 @@ public class Game {
       }
 
     }
-    System.out.println("Thank you for playing. Good bye.");
   }
 
+  //If the player completes all the tasks, reaches end sequence
   private void endSequence() {
-      Room room = roomMap.get("G12CA");
-      currentRoom = roomMap.get("106");
+      Room room = roomMap.get("G12CA"); //Get room associated with ping pong ball
+      currentRoom = roomMap.get("106"); //Player will restart in room 106
       System.out.println("------------------------------------");
       System.out.println("You see Alan walking towards you from across the hall.");
-      System.out.println(room.getCompletionStatement());
+      System.out.println(room.getCompletionStatement());  //get Alan's completion statement about ping pong ball
       System.out.println("------------------------------------");
-      System.out.println(currentRoom.longDescription());
+      System.out.println(currentRoom.longDescription());  //appear to restart game
       System.out.println("Would you like to eat the cookie? (yes/no)");
       Scanner scanner = new Scanner(System.in);
       String answer = scanner.nextLine().toLowerCase();
-      if(answer.equalsIgnoreCase("yes")){
+      if(answer.equalsIgnoreCase("yes")){ //player loses the game
         System.out.println("The cookie tastes funny. You see Krrisha standing over you smiling.");
         System.out.println("...your vision becomes hazy, until it all goes black.");
         endGame();
       }
-      else if(answer.equalsIgnoreCase("no")){
+      else if(answer.equalsIgnoreCase("no")){ //player wins the game
         System.out.println("You instead decide to smell the cookie.");
         System.out.println("The strong smell of rotten eggs burns your nose and eyes.");
         System.out.println("You see Krrisha standing outside the door...she looks oddly dissapointed.");
         System.out.println("You have won!");
         System.out.println();
-        System.out.println("Do you want to play again? (yes/no):"); 
+        System.out.println("Do you want to play again? (yes/no):");   //player has the option to play again or end the game
         System.out.print(">");
         String playAgain = scanner.nextLine();
 
@@ -176,11 +174,13 @@ public class Game {
     }
   }
 
+  //If player wants to play again, reintialize all the variables, rooms, and items
   private void resetGame() {
     try {
       initRooms("src\\zork\\data\\rooms.json");
       initItems("src\\zork\\data\\items.json");
 
+      //reset variables
       currentRoom = roomMap.get("106");
       points = 0;
       tasks = new ArrayList<Room>();
@@ -198,6 +198,7 @@ public class Game {
     parser = new Parser();
   }
 
+  //Print ending message and end the game
   private void endGame() {
     System.out.println("-------------------------------------------");
     System.out.println("Thank you for playing AfterSchool at BVG!");
@@ -283,39 +284,40 @@ public class Game {
 
 
   private void drop(Command command) {
-    if(!command.hasSecondWord()){
+    if(!command.hasSecondWord()){ //need an item to drop
       System.out.println("What do you want to drop?");
     } else {
       String item = command.getSecondWord();
       validItems = inventory.getInventory();
-  
+
+      //add item to room inventory when dropped
       for(Item i : validItems){
         if(i.getName().equals(item)){
           currentRoom.addItem(i);
         }
       }
-      inventory.removeItem(item);
+      inventory.removeItem(item); //take out item from inventory
       System.out.println("You dropped a " + item);
     }
   }
 
   private void find(Command command) {
-    if(!command.hasSecondWord()){
+    if(!command.hasSecondWord()){ //need an item to find
       System.out.println("What do you want to find?");
       return;
     }
     String item = command.getSecondWord();
     Item currItem = null;
-    for(Item i: currentRoom.getItems()){
+    for(Item i: currentRoom.getItems()){  //check if item is present in room
       if(i.getName().equals(item)){
         currItem = i;
       }
     }
-    if(currItem != null){
+    if(currItem != null){ //if item is in room, give it to the player
       inventory.addItem(currItem);
       System.out.println("You found " + item + "!");
-      currentRoom.removeItem(currItem);
-    } else {
+      currentRoom.removeItem(currItem); //take out item from room inventory
+    } else {  //if no item in the room, let player know
       System.out.println("There is no " + item + " in this room");
     }
 
@@ -323,56 +325,56 @@ public class Game {
   }
 
   private void give(Command command) {
-    if(!command.hasSecondWord()){
+    if(!command.hasSecondWord()){ //need an item to give
       System.out.println("What do you want to give?");
       return;
     }
     String item = command.getSecondWord();
     Item currItem = null;
     validItems = inventory.getInventory();
-
+    //item must be in player's inventory in order to give
     validItems.contains(currItem);for(Item i : validItems){
       if(i.getName().equals(item)){
         currItem = i;
       }
     }
-    if(currItem == null){
+    if(currItem == null){ //if not in inventory, player doesn't have item
       System.out.println("You don't have this item to give.");
       return;
-    } else if (!(currItem.isTask())){
+    } else if (!(currItem.isTask())){ //if the item isn't part of a task, cannot give it 
       System.out.println("There is no one who wants the " + currItem.getName() + ".");
     } 
-    if(currItem.isTask()){
-      if(currItem.getTaskRoom().equalsIgnoreCase(currentRoom.getRoomName())){
+    if(currItem.isTask()){ 
+      if(currItem.getTaskRoom().equalsIgnoreCase(currentRoom.getRoomName())){ //item must be given in the correct room
         System.out.println("You give the " + currItem.getName());
-        incrementPoints(10);
-        currItem.setTask(false);
-        currentRoom.setIsTaskComplete(true);
+        incrementPoints(10);  //player earns 10 points
+        currItem.setTask(false);  //item is no longer a task
+        currentRoom.setIsTaskComplete(true);  //room's task is complete
         System.out.println(currentRoom.getCompletionStatement());
         tasks.remove(currentRoom);
         inventory.removeItem(currItem.getName());
       }
-      else {
+      else { 
         System.out.println("The " + currItem.getName() + " should be given in " + currItem.getTaskRoom() + ".");
       }
     }
   }
    
   private void take(Command command) {
-    if(!command.hasSecondWord()){
+    if(!command.hasSecondWord()){ //need an item to take
       System.out.println("What do you want to take?");
       return;
     }
 
     String item = command.getSecondWord();
     Item currItem = null;
-
+    //check that item exists in the room
     for (Item validItem : currentRoom.getItems()) {
       if (validItem.getName().equalsIgnoreCase(item)) {
         currItem = validItem;
       }
     }
-      if (currItem == null){
+      if (currItem == null){  //check if the item is already in the player's inventory
         for(Item i: inventory.getInventory()){
           if(i.getName().equals(item)){
             System.out.println("You already have this item in your backpack.");
@@ -381,7 +383,7 @@ public class Game {
         }
         System.out.println("This item is not available in the room");
       } else if(inventory.addItem(currItem)){
-        currentRoom.removeItem(currItem);
+        currentRoom.removeItem(currItem); //take the item out of the room's inventory
         System.out.println("You have taken the " + currItem.getName());
         System.out.println("-->" + currItem.getName() + ": " + currItem.getDescription());
       }
@@ -401,7 +403,7 @@ public class Game {
         currItem = i;
       }
     }
-    if(currItem == null){
+    if(currItem == null){ //item must be in the player's inventory
       System.out.println("You don't have this item in your backpack");
       return;
     } else if(currItem.canEat()){
@@ -434,7 +436,7 @@ public class Game {
   }
 
   private void use(Command command) {
-    if(!command.hasSecondWord()){
+    if(!command.hasSecondWord()){ //needs something to use
       System.out.println("What do you want to use?");
       return;
     }
@@ -451,44 +453,37 @@ public class Game {
         }
       }
     }
-    if(currItem == null){
+    if(currItem == null){ //item must be inventory to use
       System.out.println("You do not have this item.");
       return;
     } else if(currItem.canEat()){  //assume that if the item is a food, the player wants to eat it.
       eat(command);
       inventory.removeItem(name);
-    } else if(currItem.getName().equals("key")){
+    } else if(currItem.getName().equals("key")){  //if key, assume player wants to unlock door
       unlock(command);
-    } else if(currItem.isTask()){
+    } else if(currItem.isTask()){ //if a task, assume player wants to give it away
       give(command);
-    } else if(currItem.isTask()){ //if it is a task increment points and display completion statement
-      incrementPoints(5);
-      currItem.setTask(false);
-      currentRoom.setIsTaskComplete(true);
-      System.out.println(currentRoom.getCompletionStatement());
-      inventory.removeItem(name);
-      tasks.remove(currentRoom);
     } else if(currItem.isOpenable()){//assume that by asking to "use" an item, the player wants to open it. 
       open(command);
-    } else {
+    } else {  //item cannot be used
       System.out.println("You cannot use this to do anything.");
     }
   }
 
-  private void unlock(Command command) {
+  private void unlock(Command command) { 
       ArrayList<Exit> exits = currentRoom.getExits();
-      for(Exit e: exits){
+      for(Exit e: exits){ //unlock all exits
         e.setLocked(false);
       }
       System.out.println("You have unlocked the door.");
-      inventory.removeItem("key");
+      inventory.removeItem("key");  //can only use key once
       incrementPoints(5);
   }
 
 
 
-  private void open(Command command) {  //will need to find a way to check if the object is in the room
-    if(!command.hasSecondWord()){
+  private void open(Command command) { 
+    if(!command.hasSecondWord()){ //need an item to open
       System.out.println("What do you want to open?");
       return;
     }
@@ -546,11 +541,8 @@ public class Game {
     } 
   }
 
-  /**
-   * Print out some help information. Here we print some stupid, cryptic message
-   * and a list of the command words.
-   */
-  private void printHelp() {
+
+  private void printHelp() {  //give list of command words
     System.out.println("You're getting tired. It would be nice to be home right now...");
     System.out.println("Your command words are:");
     parser.showCommands();
@@ -591,7 +583,7 @@ public class Game {
       currentRoom = nextRoom;
       System.out.println(currentRoom.longDescription());
       if(currentRoom.isTaskComplete() == false){
-      System.out.println(currentRoom.getDialogue());
+      System.out.println(currentRoom.getDialogue());  //only print dialogue if task isn't complete
         if(currentRoom.getDialogue().length() > 1 && !(tasks.contains(currentRoom))){
           tasks.add(currentRoom);
         }
@@ -604,7 +596,7 @@ public class Game {
       System.out.println("There are no pending tasks");
     }
     else {
-      for(Room task: tasks){
+      for(Room task: tasks){  //get the name of the person associated with task and print it with room name
       String display = task.getRoomName() + ":" + " help " + task.getDialogue().substring(0,task.getDialogue().indexOf(":"));
       System.out.println(display);
       }
@@ -621,7 +613,7 @@ public class Game {
     if(roomItems.size() == 0){
       System.out.println("The room is empty. Nothing of value in here...");
     }
-    for(Item item: roomItems){
+    for(Item item: roomItems){  //give a list of items in the room
       if(!(item.getName().equals("key"))){
         System.out.println("-->" + item.getName());
       }
