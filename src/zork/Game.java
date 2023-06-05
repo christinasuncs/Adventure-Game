@@ -87,7 +87,7 @@ public class Game {
     }
   }
 
-  //We need to initialize the items here once we create the items.json
+  //Initalizes items
   private void initItems(String fileName) throws Exception {
     Path path = Path.of(fileName);
     String jsonString = Files.readString(path);
